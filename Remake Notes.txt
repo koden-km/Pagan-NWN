@@ -1,0 +1,94 @@
+NWN Ultima 8 remake
+
+
+- nwn toolset tutorials
+  http://nwn.bioware.com/builders/modtutorial.html
+  http://nwn.bioware.com/builders/sctutorial.html
+
+
+- how does key unlocking work in NWN.
+  do you need to use a key at a target,
+  or select an unlock option with right click menu,
+  or can you just open a door if you have the key in your inventory?
+  should i have a container item 'keyring'?
+
+
+- fix:
+  docks: trap on chest in broken tower is to strong. make it weak trap. it killed my level 4?
+  docks: devons camp fire and bedroll have grass growing through. maybe drop a single road tile there.
+  herdsmans valley: maybe remove lootable dirt patch near ghost cave.
+  herdsmans ghost cave: should it just be called 'ghost cave'? need to check the quest/story behind it again.
+  herdsmans ghost cave: probably have a hidden chest with magic armour. need good spot to find. thurgests spell could give spot buff.
+
+
+- test areas:
+  docks: look at chest in broken tower, and hidden chest with key. try unlock.
+  fishermans reef: look at newly built area, check caves again.
+  herdsmans ghost cave: look around see if it feels right. test all stairs.
+  plateau entrance cave: look at newly built area. test lever to open door. i scripted it.
+  plateau area: lots of stuff.. missing a trap from NW ruin in front of chest.
+  plateau cave: look around see what it feels like.
+
+
+- next places to build:
+  + tenebrae castle (fancy interior)
+  + tenebrae prison (dungeon? the dungeon under castle)
+  + east tenebrae (city ext)
+  + east road (rural, needs ocean side)
+  + slayer cave (sea cave? call it 'treasure cove')
+  + cemetary (rural, has grave objects)
+  + catacombs upper (crypt. entrance from cemetary)
+  + catacombs upper cave (cave. the place that leaves cats and takes you to argents, carthax, daemons...)
+  + stone cove
+  + catacombs shrine (not sure which tileset, birthplace of moriens and zealan shrine)
+  + catacombs ancients (cave. this is upper 2 where you go for nacro quest)
+  + catacombs lower (crypt)
+  + pit of death (cave)
+  + hall of mountain king (cave)
+  + argent rock isle (forest or rural)
+  + path to stratos (forest, lots of high feeling platforms and brightish fog)
+  + monestary catacomb? (cave, the place below argent rock temple)
+  + carthax lake (cave or sea cave? need 2 versions, dry and flooded)
+  + carthax lake cave (cave) where you go to open ground and release water)
+  + lava tunnel (dungeon? entrance to daemons crag [outdoor], need 2 versions for before and after hydros)
+  + daemons crag (dungeon [outdoor])
+  + obsidian fortress (dungon [indoor], includes master sorcorers chamber or should i seperate?)
+  + ...
+  + house/building interiors...
+
+
+- for argentrock temple interior use nwn first temple. It has side room exits for library.
+  Use hand shape altar.
+  probably make path to stratos its own zone (teleported to using air walk).
+  use forest tileset with lots of pits. make a light gray fog and closer fog dist like in clouds.
+
+
+- daemons crag supposed to air walk jump to middle rock, then north to waterfall to jump again
+  (after hydros free).
+
+
+- once map layouts are done go over them to add detail props.
+  Pagan had a lot of mushrooms and things.
+
+
+- try some conversations, game flags and cut scene scripting.
+  devon on the beach.
+  docks first chop.
+
+
+- can i get an ultima style font to be used for conversation? look into Hak packs and 'override'?
+
+
+- see official origin ultima walkthrough for proper design and usecode file for conversations.
+
+
+- there seems to be about 6 hours per day cycle in pagan (6 named time periods). see a guard log for the list of names.
+
+
+- possible module names:
+  + Dungeons and Pagans or DnP (a play on 'DnD')
+  + Tenebrae Nights (a play on Neverwinter Nights and the pagan perpetual twilight)
+  + Pagan (no ultima in the name)
+  + Pagain (play on 'pagan' and 'again')
+  + VIII (just 8)
+
