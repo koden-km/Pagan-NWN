@@ -1,0 +1,227 @@
+Found this doc here: http://nwn.wikia.com/wiki/Waypoints_used_with_walkwaypoints
+
+# Waypoints Used With Walkwaypoints
+
+There are 4 different types of waypoints to make an NPC move around in a set pattern via the standard Bioware Waypoint system.
+WP_ , WN_ , POST_ , NIGHT_
+
+## The Four Waypoints
+
+* WP_ Waypoints: Make the NPC move around in the day.
+* WN_ Waypoints: Make the NPC move around at night.
+* POST_ Waypoints: Make the NPC walk to one spot and stay there at daytime.
+* NIGHT_ Waypoints: Make the NPC walk to one spot and stay there at nighttime.
+
+Each waypoint has a prefix followed by the TAG of the NPC.
+
+Example: If your NPC had a tag of SMITH then the waypoint tags would be, WP_SMITH, WN_SMITH, POST_SMITH, NIGHT_SMITH
+
+## Waypoint Rules
+
+### General
+
+* The NPC can have multiples of the WP_ and WN_ waypoints, but only one POST_ and one NIGHT_ waypoint.
+* Multiples of the WP and WN waypoints have a sequence number at the end of the tag name, so for the NPC called SMITH,
+  the waypoints would be; WP_SMITH_01, WP_SMITH_02, WP_SMITH_03, etc...
+* This means you cannot have the NPC run a set pattern of WP_ waypoints to then stand at a POST_ waypoint.
+
+### Overrides
+
+* WN waypoints override NIGHT waypoint.
+* WP waypoints override POST waypoints.
+* POST waypoints cannot be used with WP waypoints for a given NPC.
+* NIGHT waypoints cannot be used with WN waypoints.
+
+## Simple Waypoint
+
+The easiest way of getting the waypoints up and running for your NPC is:
+* Right-click on the NPC and choose create waypoint.
+  - A waypoint is created underneath or near the npc.
+* Move the mouse to the point on screen you want your second waypoint to appear, and then right-click; the option to create a waypoint is given.
+* Choose "create a waypoint" to create a second waypoint for your NPC.
+* This process can be done multiple times.
+
+## Waypoints for Guards
+
+To get a guard to return to his barracks at night:
+
+### Same Area
+
+* If the guard has a tag of GUARD, then place a NIGHT_GUARD waypoint in the barracks.
+  - This can be used with a sequence of WP waypoints for your guard to patrol in the day, e.g. WP_GUARD_01, WP_GUARD_02, etc
+  - Or it can be used with a POST waypoint tagged POST_GUARD to have him stand at his post in the day.
+
+### Different Areas
+
+To allow for cross-area transitions, e.g. Barracks in one area, patrol the route in another area, set the global int X2_SWITCH_CROSSAREA_WALKWAYPOINTS
+to "one" (1) on the module.
+To do this:
+
+* In module properties, click the advanced tab, then click variables.
+* Enter X2_SWITCH_CROSSAREA_WALKWAYPOINTS as an int and the value to 1.
+
+## Four Waypoint FAQ
+
+### Guard gets stuck crossing area transitions (or goes on a strange route)
+
+You will have to experiment with this, due to some issues with the pathfinding. If your area has more than one transition point
+to a second (but same) area then do not expect your NPC to use the transition point you want.
+
+It may be best to experiment using POST and NIGHT waypoints first to see which route the NPC favours. It's worth knowing this,
+so you know why its happening, and you don't waste too much time, like I have.
+
+### The NPC gets stuck on walls
+
+This happens because when a player is not in the area, the NPC's AI is set to low.
+
+One of the best ways to get around this is to have more WP, WN waypoints if you can to help the NPC pathfind a lot better.
+
+Obviously this won't help POST and NIGHT waypoints, but if you know scripting you could place a script on enter of an area to
+check if any players are in the area, and if not, jump the NPC to its POST or NIGHT waypoint.
+
+### NPC is not facing the same direction as his waypoint
+
+(For a POST or NIGHT waypoint)
+
+Solution:
+
+* Right-click the Waypoint and go to variables.
+* Enter X2_L_WAYPOINT_SETFACING as an int and the value to 1.
+
+### NPC not changing to NIGHT_ or WN waypoints at night
+
+Ensure that in the onspawn script of your NPC, the following line is uncommented
+(e.g. the // removed before it, and the line not displayed in green)
+
+* SetSpawnInCondition(NW_FLAG_DAY_NIGHT_POSTING);
+
+### NPC won't walk to its waypoints
+
+In the onspawn script of your NPC ensure that following two lines are still commented out (e.g. the // is still before
+the lines, and the line is displayed green)
+
+* SetSpawnInCondition(NW_FLAG_IMMOBILE_AMBIENT_ANIMATIONS);
+* SetSpawnInCondition(NW_FLAG_AMBIENT_ANIMATIONS);
+
+## Waypoints with Mobile Ambient Animations
+
+The following Waypoints require that mobile ambient animations be switched on at spawn time of the NPC. That means that the
+follwing line needs to be uncommented in the onspawn script.
+(e.g. the // removed before it, and the line not displayed in green)
+
+* SetSpawnInCondition(NW_FLAG_AMBIENT_ANIMATIONS);
+
+When mobile ambient animations is switched on for a NPC, the NPC will wander around and interact with other NPC's that have
+either mobile or immobile ambient animations switched on. They will also interact with nearby placeables. walking up to a
+placeable, closing nearby doors.
+
+Also worth noting that the NPC's will also use the same animations for mobile ambient animations, as they do for immobile
+ambient animations (with a bit more moving around ).
+
+The NPC with mobile ambient animaions switched on will never wander too far from its spawn point (starting position), always
+returning back to it.
+
+The following waypoints allow for better control of your NPC's. To wander around more between the waypoints described below,
+aswell as the placeables the NPC comes across, or the other NPC's, or its spawn point (start position).
+
+Remember - The NPC's will not walk straight to these waypoints as in walkwaypoints above but will meander amongst them (wander
+about them in a casual laid back way).
+
+### Generic Stop Waypoint
+
+This waypoint is tagged "NW_STOP".
+
+* If you place a few of these in an area, lets say a city exterior for example.
+* If the NPC's spawned in that area have mobile ambient animations switched on, they will walk amongst the NW_STOP waypoints.
+* This works quite well if you want a busy/crowded city/town feel. So you could have a park area in the city with an NW_STOP
+  waypoint, or/and a NW_STOP waypoint near a market stall.
+* The NPC's spawned in that are will at some point in their wanderings go to these waypoints.
+
+### Tavern Waypoint
+
+This waypoint is tagged "NW_TAVERN".
+
+* If NPC's are spawned inside an area with the tavern waypoint, then those NPC's will remain in the tavern and not leave it.
+* However, for NPC's spawned outside the tavern area,
+  - If you place a NW_STOP waypoint inside the tavern aswell (as the NW_TAVERN), the NPC's will cross the area transition to
+    visit the NW_STOP waypoint in the Tavern, neatly closing the door behind them on entry/exit of the tavern/area outside.
+
+There has been a bit of a misconception regarding this waypoint, this waypoint does not make any new animations appear as far
+as I know by simply dropping it in a tavern.
+
+Only by setting the immobile or mobile animations on an NPC in the spawn script will the NPC move.
+
+### Shop Waypoint
+
+This waypoint is tagged "NW_SHOP".
+
+* Like the tavern waypoint, if an NPC is spawned inside an area with the shop waypoint then the NPC will remain in the shop
+  and not leave it (the shop keeper/assistant I guess).
+* If an NPC is spawned outside the shop area or if you place a NW_STOP waypoint inside the shop as well, the NPC will cross
+  the area transition to visit the NW_STOP waypoint, neatly closing the door behind them on entry/exit of the shop.
+
+### Home waypoint
+
+This waypoint is tagged "NW_HOME".
+
+* If an npc is spawned in an area that has a home waypoint, then the NPC will classify that area as his home.
+* The NPC should leave the area in the day and return to it at night.
+  - After long testing, the NPC only seemed to want to leave the area if a player entered it, however the NPC did return
+    back to the area at night.
+
+### Safe Waypoint
+
+This waypoint is tagged "NW_SAFE".
+
+Placing one of these waypoints in area, means that any injured NPC with mobile animations will retreat to this point.
+(Sort of like a cowering corner.)
+
+* NPC's will not cross area transitions to get to a NW_SAFE waypoint.
+* If there is not a NW_SAFE waypoint in the same area then they will resume mobile animations.
+
+### Stealth Waypoint
+
+This Waypoint is tagged "NW_STEALTH".
+
+Placing one of these waypoints in an area, means any NPC with stealth capabilities turns stealth mode on when it reaches
+one of these waypoints.
+
+* Could be good for using in dark caverns/dungeons etc, to have NPC dissappear into and appear from the darkness.
+
+### Detect waypoint
+
+Ok, I admit, this one I thought I'd leave you guys to figure out...
+
+## Mobile Ambient Waypoint FAQ
+
+### NPC not wandering, even though animations switched on
+
+Ensure that the following line is commented out in the onspawn script of the NPC.
+(e.g. the // is still before the lines, and the line is displayed green)
+
+* SetSpawnInCondition(NW_FLAG_IMMOBILE_AMBIENT_ANIMATIONS);
+
+### Use NW_STOP waypoints inside NW_TAVERN,NW_SHOP waypointed areas?
+
+The answer is yes.
+
+You will need to place NW_STOP waypoints in the NW_TAVERN,NW_SHOP areas if you want the NPC's outside to come and drink/shop.
+
+## Creature Waypoints
+
+As an extra, I thought I would throw this one in, I've done most of the others, so...
+
+The following waypoint is used with the Bioware Beholder AI.
+
+### Beholder AI Exit waypoint
+
+This waypoint is tagged "X2_WP_BEHOLDER_TUNNEL"
+
+If you look in the script "x2_ai_behold" it tells you what the waypoint is for. It explains:
+
+* Beholder will always use its eyes, unless
+  - If threatened in melee, it will try to move away or float away to the nearest waypoint tagged X2_WP_BEHOLDER_TUNNEL
+
+So if you place a few of these waypoints around, your beholder will escape to the nearest one.
+
+* If you noticed in Chapter two of HotU, these waypoints where placed on the otherside of room doors (sneaky).

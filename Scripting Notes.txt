@@ -1,0 +1,609 @@
+Notes
+=====
+
+Misc notes and script snippets.
+
+KM: Tag names are limited to 32 characters?
+
+
+
+Credit
+------
+
+- Celowin's scripting tutorial
+- Beamdog for Enhanced Edition
+- Ultima Codex for keeping Ultima alive
+
+
+
+Naming Conventions
+------------------
+https://nwnlexicon.com/index.php?title=Naming_Conventions
+
++---------------+--------+-------------+
+| Type          | Prefix | Example     |
++---------------+--------+-------------+
+| action        | a      | aKill       |
+| effect        | e      | eConPenalty |
+| event         | ev     | evAttacked  |
+| float         | f      | fResult     |
+| int           | n      | nAge        |
+| int (boolean) | b      | bIsSpell    |
+| itemproperty  | ip     | ipProperty  |
+| location      | loc    | locJumpTo   |
+| object        | o      | oPC         |
+| string        | s      | sName       |
+| struct        | str    |  strPerson  |
+| talent        | t      | tSkillHide  |
+| vector        | v      | vVelocity   |
++---------------+--------+-------------+
+
+
+
+Gameplay Goals For Remake
+-------------------------
+
+Standard NWN character classes and leveling. This might help it feel more like the older Ultima's where you had classes, even U9.
+
+Aiming for play through of U8 story. Including learning the spells of Pagan. 
+
+
+
+Things to figure out and/or confirm before getting in to deep
+-------------------------------------------------------------
+
+* Can NPCs waypoint through area transitions?
+
+* If i need an NPC from other areas for cut scenes or locations during time schedule should I:
+  teleport them, walk them, or spawn a clone? (depends on above if NPCs can transition).
+
+* Tag names are limited to 32 characters?
+
+
+
+Tutorials
+---------
+https://nwnlexicon.com/index.php?title=Category:Tutorials
+
+
+
+Debugging
+---------
+https://nwnlexicon.com/index.php?title=Category:Debug_Functions
+
+
+
+Debug Message Helper
+--------------------
+https://nwnlexicon.com/index.php?title=PrintString
+https://nwnlexicon.com/index.php?title=WriteTimestampedLogEntry
+
+Records a message to the log file.
+
+void PrintString(
+    string sString
+);
+
+// sample debug call, covers many testing bases:
+void debug(string sMessage) 
+{
+     SendMessageToPC(GetFirstPC(), sMessage);
+     SendMessageToAllDMs(sMessage);
+     PrintString(sMessage);
+}
+
+Records a string in the log file along with a date-time stamp.
+
+void WriteTimestampedLogEntry(
+    string sLogEntry
+);
+
+Example:
+
+// This call would produce "[Fri Jul 12 12:08:03] Test" in the log file
+WriteTimestampedLogEntry("Test");
+
+
+
+Debug Logic Helper (runscript)
+------------------------------
+
+KM: Apparently there is some kind of console mode and you can run custom scripts?
+Mentioned here: https://nwnlexicon.com/index.php?title=An_Introduction_To_Tile_Magic
+"Start your module, enter the area, enable debugmode, and run your script using the runscript command."
+
+This will allow me to build in some plot skipper tools to jump ahead in the plot and test things better.
+One of the main things to skip would be the docks scene so that the chracters are all in place for the regular game.
+
+
+
+Constants
+---------
+
+Constants can be defined in an include file. This will make working with things like tags much nicer in many files.
+Each file can just import the/a constant definition file.
+Constants can be: int, float, string.
+
+// KM: The constant makes it strict, the string value can be what ever, but may as well match. Length limit 32 characters?
+const string U8_IT_THING = "U8_IT_THING";
+
+
+
+Cut Scenes
+----------
+https://nwnlexicon.com/index.php?title=X1_inc_cutscene
+https://nwnlexicon.com/index.php?title=X2_inc_cutscene
+
+KM: Sounds like awesome stuff! :D
+
+CutDisableAbort
+CutSetCutsceneMode
+GetActiveCutsceneNum
+CutStoreMusic
+CutRestoreMusic
+CutSetAmbient
+CutSetMusic
+CutStoreCameraFacing
+CutRestoreCameraFacing
+CutSetCamera
+CutSetFacingPoint
+CutSetActiveCutsceneForObject
+CutSetWeather
+CutSpeakString
+CutSetPlotFlag
+CutPlaySound
+CutPlayAnimation
+CutActionCastFakeSpellAtLocation
+CutActionCastFakeSpellAtObject
+CutActionCastSpellAtLocation
+CutActionCastSpellAtObject
+CutKnockdown
+CutDeath
+CutActionSit
+CutActionMoveToLocation
+CutActionMoveToObject
+CutJumpToLocation
+CutJumpAssociateToLocation
+CutJumpToObject
+CutFadeFromBlack
+CutFadeToBlack
+CutFadeOutAndIn
+CutBeginConversation
+CutActionStartConversation
+CutActionEquipItem
+CutActionUnequipItem
+
+// visual effects
+effect eShake = EffectVisualEffect(VFX_FNF_SCREEN_SHAKE);
+effect eLightning = EffectVisualEffect(VFX_IMP_LIGHTNING_M);
+effect ePortal = EffectVisualEffect(VFX_IMP_UNSUMMON);
+
+
+
+Cut Scene Tutorial
+------------------
+https://nwnlexicon.com/index.php?title=Category:Cut_Scenes
+
+KM: Hmm they might be old now though? The first tutorial in that series says this:
+"Note: these tutorials were written prior to the new cut-scene functionality added by BioWare in patch 1.30."
+
+
+
+Cut Scene NPC Control
+---------------------
+https://nwnlexicon.com/index.php?title=ActionMoveToLocation
+
+void ActionMoveToLocation(
+    location locDestination,
+    int bRun = FALSE
+);
+
+KM: I will probably want to also disable regular AI so they only act as told.
+I think i saw some functions related to AI that might help with that. Paralyze isn't going to work for this or I can't move them.
+
+// Make the calling object walk to a waypoint
+void main()
+{
+     object oWP = GetObjectByTag("my_waypoint");
+     location lDestination = GetLocation(oWP);
+     ActionMoveToLocation(lDestination,FALSE);
+}
+
+Also see this one:
+https://nwnlexicon.com/index.php?title=MoveToNewLocation
+
+void MoveToNewLocation(
+    location lNewLocation = none,
+    object oTarget = OBJECT_SELF
+);
+
+This is a convenience function that places two commands in the target objects queue using two AssignCommand calls. The first wraps 
+ActionMoveToLocation(lNewLocation, FALSE). 
+The second wraps 
+ActionDoCommand(SetFacing(GetFacingFromLocation(lNewLocation)) 
+These two commands effectively command the target to move to the new location, then instructs the target to face the correct way once they get there.
+The default target is OBJECT_SELF. Note that the restrictions to AssignCommand, ActionMoveToLocation, and SetFacing still apply. 
+
+
+
+Cut Scene Creature Paralyze (mainly the Player)
+-----------------------------------------------
+https://nwnlexicon.com/index.php?title=EffectCutsceneParalyze
+
+Returns an effect that is guranteed to paralyze a creature; this effect is identical to EffectParalyze except that it cannot be resisted.
+
+See notes for EffectParalyze for more remarks, code and description.
+
+The target this effect is applied to must be a creature for it to work. This effect should not be applied instantly, only temporarily or permanently.
+
+KM: Need this for cut scenes like the docks where the player can watch but not interact.
+
+effect EffectCutsceneParalyze();
+
+
+
+Coloured Text
+-------------
+https://nwnlexicon.com/index.php?title=StringToRGBString
+
+string StringToRGBString(
+    string sString,
+    string sRGB
+);
+
+...
+string sNewItemName = "Sir Elric's Bulletproof Plate Mail";
+SetName(oItem, StringToRGBString(sNewItemName, STRING_COLOR_RED));
+
+if(GetName(oItem) == "Sir Elric's Bulletproof Plate Mail")
+{ // this will never happen
+}
+else if(GetName(oItem) == sNewItemName)
+{ // this will never happen either
+}
+else
+{ // this will always happen
+}
+
+if(GetName(oItem) == StringToRGBString(sNewItemName, STRING_COLOR_RED))
+{ // this will always happen
+}
+...
+
+
+
+Guardian Taunts
+---------------
+
+Should be able to do these by making the Player or some hidden entity yell some text when the player crosses a trigger.
+The trigger should fire once only when certain plot progress is reached.
+Not sure if a yell appears above a head, if so i guess do it on the Player (as per U9 plot). Pretty sure yell text is red also.
+
+
+Stone of Recall (from Mythran)
+------------------------------
+http://nwn.wikia.com/wiki/Stone_of_recall_system
+
+KM: This is like the one in the official NWN game, but with some changes this can work like U8.
+KM: Not sure why these script snippets from the tutorials have extra braces. It should be easy to clean when ready to import.
+
+Create your item. Be sure to give it a unique tag name and that you remember that tagname.
+Make it "magical". Edit the properties of the item and click the "Properties" tab.
+There, you should see a whole bunch of effects. Go down to "Cast Spell" and click that to open that, then go down to "Unique Power".
+Decide if it's a power that you will cast on others, or only on the wielder, then double-click the appropriate decision.
+When you double-clicked, that added that Unique Power to the right-hand pane of the window. Double-click the power there, to determine how many charges per day it gets.
+When done, click OK/Done to get back to the editor.
+Now you have your item, you need to get it to work. Here's what you do:
+
+Go to Edit->Module Properties->Events
+For the OnActivateItem click Edit.
+Paste this script and save as "StoneRecall01" (or whatever you want)
+
+void main()
+{
+	object oActivated = GetItemActivated();
+	switch (2);
+	{
+		// Item 1 = Stone of Recall type item.
+		case 1:
+			if (GetTag(oActivated) == "item1")
+			{
+				object oObject = GetItemActivator();
+				object oTarget = GetItemActivator();
+				location lLocation = GetLocation(oObject);
+				{
+					// Object 1 = A Placeable object (invisible object works best). Must be the blueprint name NOT TAG!!
+					CreateObject(OBJECT_TYPE_PLACEABLE, "object1", lLocation, FALSE);
+				}
+				{
+					// stonerecall02 = name of second script
+					ExecuteScript("stonerecall02", oTarget);
+				}
+			}
+			break;
+	}
+}
+
+Create a new placeable object and give it a unique tag. Make sure its appearance is set to Invisible Object. This is your object1 in the script above.
+Create a new waypoint and give it a unique name. Place this where you want the player to appear after activating the item.
+Go to the Script Editor, paste this in and save as "stonerecall02".
+
+void main()
+{
+	object oActivated = GetItemActivated();
+	switch (2);
+	{
+		case 1:
+			if (GetTag(oActivated) == "item1")
+			{
+				object oPC = GetItemActivator();
+				// waypoint1 = Tag of waypoint where the player will be taken to when they activate the stone
+				object oTarget = GetWaypointByTag("waypoint1");
+				AssignCommand(oPC,JumpToObject(oTarget));
+				ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect (VFX_IMP_HOLY_AID), oPC);
+			}
+			break;
+	}
+}
+
+Create a Recall Portal near the waypoint you just made.
+Go to the Advanced Tab and edit the conversation.
+Create a new conversation, with just a simple line like "This will take you back to where you activated the Stone of Recall".
+Add a PC line such as "Step in to the Portal" and then add this script to the Actions Taken part.
+
+void main()
+{
+	location lLocation;
+	object oObject, oActionSubject, oPC, oDestroy;
+	{
+		// object1 = TAG name of the placeable created in the first script	
+		oObject = GetObjectByTag("object1", 0);
+		oDestroy = GetObjectByTag("object1", 0);
+		oActionSubject = GetPCSpeaker();
+		oPC = GetPCSpeaker();
+		lLocation = GetLocation(oObject);
+		{
+			AssignCommand(oActionSubject, ActionJumpToLocation(lLocation));
+			ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect (VFX_IMP_UNSUMMON), oPC);
+		}
+		{
+			DestroyObject(oDestroy, 3.0);
+		}
+	}
+}
+
+
+
+NPC Door closing
+----------------
+https://nwnlexicon.com/index.php?title=AnimActionCloseRandomDoor
+
+Causes an NPC to close a nearby open door.
+
+KM: The NPC's used to close their house doors every so often if left open. "Who left this open?"
+
+int AnimActionCloseRandomDoor();
+
+
+
+NPC Schedules
+-------------
+https://nwnlexicon.com/index.php?title=Category:Animation_Functions
+
+KM: Not sure how to handle time of day. U8 had some custom hour period things, i think 6 total?
+I need to prevent day from happening to keep the twilight theme of Pagan.
+I could try run the clock as normal but only over a 6 hour range and reset it to the start range each time?
+
+KM: Sounds like awesome stuff! :D
+
+AnimActionGoHome
+AnimActionLeaveHome
+AnimActionSitInChair
+AnimActionGetUpFromChair
+
+Waypoints for schedules?
+This talks about some automatic waypoint helper function: https://nwnlexicon.com/index.php?title=CheckWayPoints
+This function takes oWalker's tag, and looks for waypoint tags with matching names: "POST_<tag>" and "WP_<tag>_01" (always checked).
+If the NW_FLAG_DAY_NIGHT_POSTING spawn-in condition has been set in oWalker's OnSpawn script, then "NIGHT_<tag>" and "WN_<tag>" are also sought.
+The NPC can have multiples of the WP_ and WN_ waypoints, but only one POST_ and one NIGHT_ waypoint.
+KM: I guess i could build something similar for the Pagan time system that works generic based on tag concat for each NPC.
+
+// Source for CheckWayPoints():
+int CheckWayPoints(object oWalker = OBJECT_SELF)
+{
+    object oWay1;
+    object oWay2;
+    object oWay3;
+    object oWay4;
+    string sTag = GetTag(oWalker);
+    if(GetSpawnInCondition(NW_FLAG_DAY_NIGHT_POSTING))
+    {
+        oWay2 = GetWaypointByTag("NIGHT_" + sTag);
+        oWay4 = GetWaypointByTag("WN_" + sTag + "_01");
+    }
+ 
+    oWay1 = GetWaypointByTag("POST_" + sTag);
+    oWay3 = GetWaypointByTag("WP_" + sTag + "_01");
+ 
+    if(GetIsObjectValid(oWay2) || GetIsObjectValid(oWay4) || GetIsObjectValid(oWay1) || GetIsObjectValid(oWay3))
+    {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+
+City Guards
+-----------
+https://nwnlexicon.com/index.php?title=WalkWayPoints
+
+void WalkWayPoints(
+    int nRun = FALSE,
+    float fPause = 1.0
+);
+
+The waypoints to walk must have tags in the format "WP_" + NPC's tag name + "_0#".
+Example: WP_CITYGUARD_01. The # determines what order the NPC walks the waypoints in.
+You may also have up to one "POST_" + NPC's tag name waypoint tagged; if so the NPC will return to this waypoint after a combat.
+Waypoint names are case-sensitive.
+
+KM: They should do their waypoint walk patrol with pause or their stand guard and comment.
+Comments like "Watch for undead." and "Boy this weapon gets heavy!" (with weapon animation).
+
+
+
+Weather
+-------
+https://nwnlexicon.com/index.php?title=SetWeather
+
+Allows you to set the weather for an area or the entire module.
+
+void SetWeather(
+    object oTarget,
+    int nWeather
+);
+
+KM: When Hydros is free, this will cause all outdoor areas to rain non stop:
+KM: Fog can be set also i think. I remember there being fog after Hydros free.
+
+SetWeather(GetModule(), WEATHER_RAIN);
+
+
+
+Change Ground Tiles (Tile Magic)
+--------------------------------
+https://nwnlexicon.com/index.php?title=TLChangeAreaGroundTiles
+https://nwnlexicon.com/index.php?title=An_Introduction_To_Tile_Magic
+
+This function will flood the entire area with the tile in question. nColumns and nRows indicate the size of the area. For instance, a 4 * 6 area will have 4 columns and 6 rows.
+
+You may not want to flood your entire area, but this function will give you a pretty good idea how to use the tile magic (tm). Basically, you just create an invisible object in the center of a tile, and apply a permanent visual effect to that invisible object.
+
+void TLChangeAreaGroundTiles(
+    object oArea,
+    int nGroundTileConst,
+    int nColumns,
+    int nRows,
+    float fZOffset = -0.4f
+);
+
+KM: Not sure if this is a visual effect only? Might be able to use for Devon to walk on water?
+KM: Flood Hydros lair (Carthax lake) after freed. Probably better than swapping transition areas?
+
+// Create a Small (4x4) Rural or City Exterior area, place the Start Location
+// in the area and add this script to the area's OnEnter event. When the first
+// player (or creature) enters the area the TileMagic effect will be created.
+ 
+// This script will actually work from any object event except the module events.
+ 
+#include "x2_inc_toollib"
+ 
+void main()
+{
+    object oArea = GetArea(OBJECT_SELF);
+ 
+    // We only want to apply tilemagic if it does not already exist.
+    if (GetLocalInt(oArea, "TILEMAGIC_APPLIED") == FALSE)
+    {
+        // Cover a 3x3 square with knee-high water: the square starts in the
+        // area's bottom left corner and extends x columns right and y rows up.
+        // NOTE: the water tile has a built in z-offset of -1m, so to make it
+        // it knee-high for a human (about 0.5m) we have to raise it by 1.5m.
+        TLChangeAreaGroundTiles(oArea, X2_TL_GROUNDTILE_WATER, 3, 3, 1.5);
+ 
+        // Set a variable to indicate the tilemagic exists.
+        SetLocalInt(oArea, "TILEMAGIC_APPLIED", TRUE);
+    }
+}
+
+
+
+Deity's
+------------------
+NWN (D&D) has the option to set a deity. I should set each titan as the deity for each town.
+Some are specific like Berren though. Even know he is in Tenebrae most of the time, he still follows Pyros.
+The titans themselves could set The Guardian as their deity though.
+
+
+
+Creature: Titans
+----------------
+Use dragons as the visual interaction thing. Coloured to their element.
+After "defeating" them in the Ethereal Void, I could strip them of their power and have them appear as human again.
+
+
+
+Creatures/Characters
+--------------------
+The ultima wikia has lots of small rarely known details about each character.
+
+Apparently you can set local vars directly on creatures in the toolset.
+This will be good for setting some initial values like state.
+Might be able to set the "bMetPC" flag there, but that won't work for multiplayer and the NPC meeting each individually.
+Probably fine, but if needed that would have to be fully dynamic and concat the PC name into the var flag. eg. "bMet<FirstName>".
+
+If setting flags and other state on a runtime created crature, then use the queued action so it safely does it after spawn is completed.
+ActionDoCommand(SetLocal<T>(object oObject, string sVarName, T tValue))
+ActionDoCommand(SetLocalInt(object oObject, string sVarName, int nValue))
+ActionDoCommand(SetLocalString(object oObject, string sVarName, string sValue))
+
+
+
+Tavern drunk
+------------
+https://nwnlexicon.com/index.php?title=GetEnteringObject
+
+Gets the object that last opened or entered the calling object.
+
+object GetEnteringObject();
+
+// Greet any Players that come into a trigger set around a drunk in a tavern.
+void main()
+{
+    if (GetIsPC(GetEnteringObject()))
+    {
+        AssignCommand(GetNearestObjectByTag("TavernPatron"), SpeakOneLinerConversation("DrunkGreeting"));
+        AssignCommand(GetNearestObjectByTag("TavernPatron"), ActionPlayAnimation(ANIMATION_LOOPING_PAUSE_DRUNK));
+    }
+}
+
+
+
+Creature: Mythran
+-----------------
+http://ultima.wikia.com/wiki/Mythran
+Trivia:
+He gives a potion once a day. He is visited by Shaana.
+
+
+
+Creature: Changling
+-------------------
+By default could use a gnome with gray clothes?
+There was some function to copy a creature. That could be used to mimic its target player.
+
+
+
+Tavern joining to the other 2 houses
+------------------------------------
+I don't think the rural tileset had options for houses to join for those, but what i can do
+is make them join through a basement tunnel thing. Just drop in a exit low and either do the
+joiner room or just port between each directly. Not sure about putting them in the same
+internal area or having 3 separate areas. I don't want path finders to go through the houses
+to get into the tavern, which they might do when using those common generic path finding points.
+So its probalby worth doing them as 3 separate ones.
+
+
+
+Electric Traps
+--------------
+https://nwnlexicon.com/index.php?title=TrapDoElectricalDamage
+
+Function for doing electrical traps.
+
+void TrapDoElectricalDamage(
+    int ngDamageMaster,
+    int nSaveDC,
+    int nSecondary
+);
