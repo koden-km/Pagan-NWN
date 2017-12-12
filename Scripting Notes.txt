@@ -607,3 +607,26 @@ void TrapDoElectricalDamage(
     int nSaveDC,
     int nSecondary
 );
+
+
+
+Zealan Gods/Goddesses
+---------------------
+
+Use statues, add some spell particle effects to make them stand out.
+Maybe different colours for each one? I remember some red and blue sparkles.
+
+For the trapped ones in the Lost Value, use different coloured spell particle effects.
+Screenshots of the Lost Value show them trapped in some kind of yellow crystals, so maybe use yellow.
+
+
+
+Lost Vale
+---------
+
+Read the kind of finally released story docs and see if it mentions how to get there. eg. through
+the plateau double doors.
+What unlocks them? If not mentioned, then consider using the unnamed ring like item from the
+waterfall cave, which is below the plateau lake; and/or use the EAC item in Mythran's house, which
+is related to the Ultima 7 power generators in the Guardian questline? It was the Guardian who gave
+power to the Titan's on Pagan afterall, which allowed them to fight the Zealan gods.
