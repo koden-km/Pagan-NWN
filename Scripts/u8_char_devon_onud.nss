@@ -4,13 +4,11 @@
 // Enable user defined scripts in OnSpawn by saving a copy and uncommenting the SetSpawnInCondition line near the bottom.
 // Then uncomment any OnXXXX events that are needed.
 
-/*
-Areas where active:
-- Docks
-- West Tenebrae
-- Central Tenebrae Castle (indoor)
-- Central Tenebrae Prison
-*/
+// Areas where active:
+// - Docks
+// - West Tenebrae
+// - Central Tenebrae Castle (indoor)
+// - Central Tenebrae Prison
 
 #include "u8_constants"
 #include "u8_lib"

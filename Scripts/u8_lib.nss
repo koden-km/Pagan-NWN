@@ -86,6 +86,9 @@ void U8DoRecallToPortal(object oPC, string sPortalWaypointTag)
 	{
 		if (U8HasFoundRecalPortal(oPC, sPortalWaypointTag))
 		{
+			effect eVisual = EffectVisualEffect(VFX_FNF_SMOKE_PUFF);
+			ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eVisual, oPC, 1.0);
+
 			AssignCommand(oPC, JumpToLocation(GetLocation(oPortalWaypoint)));
 		}
 	}

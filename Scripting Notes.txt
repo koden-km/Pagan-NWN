@@ -45,7 +45,10 @@ Gameplay Goals For Remake
 
 Standard NWN character classes and leveling. This might help it feel more like the older Ultima's where you had classes, even U9.
 
-Aiming for play through of U8 story. Including learning the spells of Pagan. 
+Aiming for play through of U8 story. Including learning the spells of Pagan and maybe visiting the Lost Vale.
+
+The ghost side quest. Apparently the herdsman family and Kilandra are involed in the ghost side quest.
+Kilandra's daughter has/had the key for the door. Her grave is in the cemetery.
 
 
 
@@ -237,6 +240,7 @@ See notes for EffectParalyze for more remarks, code and description.
 The target this effect is applied to must be a creature for it to work. This effect should not be applied instantly, only temporarily or permanently.
 
 KM: Need this for cut scenes like the docks where the player can watch but not interact.
+KM: Also look for something about "cutscene dominate", for taking control during cut scenes?
 
 effect EffectCutsceneParalyze();
 
@@ -386,15 +390,42 @@ int AnimActionCloseRandomDoor();
 
 
 
+Pagan Time and Calendar System
+------------------------------
+http://wiki.ultimacodex.com/wiki/Pagan_Calendar
+
+The Pagan day consists of 6 times, each equaling four hours:
+* Bloodwatch - 00:00-04:00
+* Firstebb - 04:00-08:00
+* Daytide - 08:00-12:00
+* Threemoons - 12:00-16:00
+* Lastebb - 16:00-20:00
+* Eventide - 20:00-00:00
+
+The Pagan week is divided into 6 days:
+* Guarday - To honor the Guardian (Who they think is a benevolent being)
+* Earthday - To honor Lithos
+* Waterday - To honor Hydros
+* Airday - To honor Stratos
+* Fireday - To honor Pyros
+* Blackday - To remember the war and the Destroyer
+
+The Pagan year is divided into 6 months:
+* Stonemark
+* Skyrock
+* Windbreak
+* Stormpeak
+* Firefall
+* DarkFlame
+
+KM: Not sure how to handle time of day with NWN. I need to prevent daylight from happening to keep the twilight theme of Pagan.
+I could try run the clock as normal but only over a 6 hour range and reset it to the start range each time?
+
+
+
 NPC Schedules
 -------------
 https://nwnlexicon.com/index.php?title=Category:Animation_Functions
-
-KM: Not sure how to handle time of day. U8 had some custom hour period things, i think 6 total?
-I need to prevent day from happening to keep the twilight theme of Pagan.
-I could try run the clock as normal but only over a 6 hour range and reset it to the start range each time?
-
-KM: Sounds like awesome stuff! :D
 
 AnimActionGoHome
 AnimActionLeaveHome

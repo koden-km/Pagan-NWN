@@ -26,7 +26,6 @@ const string U8_CT_DOLORAS = "CT_Doloras";  // Male god of Grief (Lost Vale)
 const string U8_CT_TIMYRA = "CT_Timyra";  // Female, goddess of Fear (Lost Vale)
 
 // Creature Tags (Characters)
-// TODO: lable these and comment what they do: http://wiki.ultimacodex.com/wiki/Category:NPCs_of_Ultima_VIII
 const string U8_CT_DEVON = "CT_Devon";  // Male fisherman at the Docks and West Tenebrae
 const string U8_CT_MORDEA = "CT_Mordea";  // Female Tempest (Queen) at Central Tenebrae Palace
 const string U8_CT_MYTHRAN = "CT_Mythran";  // Male old man of magic at the Plateau
@@ -35,18 +34,18 @@ const string U8_CT_DARION = "CT_Darion";  // Male fight master at East Tenebrae
 const string U8_CT_TARNA = "CT_Tarna";  // Female head guard at East Tenebrae
 const string U8_CT_KORICK = "CT_Korick";  // Male blacksmith at West Tenebrae
 const string U8_CT_ORLOK = "CT_Orlok";  // Male tavern owner at West Tenebrae
-const string U8_CT_BENTIC = "CT_Bentic";  // TODO (the librarian?)
-const string U8_CT_ARAMINA = "CT_Aramina";  // TODO (the queens maid?)
-const string U8_CT_GWILLIM = "CT_Gwillim";  // TODO (heardsman?)
-const string U8_CT_CORINTH = "CT_Corinth";  // TODO (heardswoman?)
-const string U8_CT_KILANDRA = "CT_Kilandra";  // TODO (the crazy fish lady?)
+const string U8_CT_BENTIC = "CT_Bentic";  // Male librarian at East Tenebrae
+const string U8_CT_ARAMINA = "CT_Aramina";  // Female servant of Tempest at Central Tenebrae Palace and East Tenebrae
+const string U8_CT_GWILLIM = "CT_Gwillim";  // Male Torax farmer in Herdsman's Valley
+const string U8_CT_CORINTH = "CT_Corinth";  // Female Torax farmer in Herdsman's Valley
+const string U8_CT_KILANDRA = "CT_Kilandra";  // Female crazy fish lady at Fisherman's Reef
 const string U8_CT_RHIAN = "CT_Rhian";  // Female Jeweler/Tailor at East Tenebrae
 const string U8_CT_SHAANA = "CT_Shaana";  // Female Executioner at West Tenebrae
 const string U8_CT_LOTHIAN = "CT_Vividos";  // Female Necromancer
 const string U8_CT_VIVIDOS = "CT_Vividos";  // Male Necromancer at Cemetery (Lothian's apprentice)
 const string U8_CT_CYRRUS = "CT_Cyrrus";  // Male Theurgist at Argentrock Isle
 const string U8_CT_STELLOS = "CT_Stellos";  // Male oldest Theurgist at Argentrock Isle
-const string U8_CT_JENNA = "CT_Jenna";  // TODO (might be a Theurgist but not sure?)
+const string U8_CT_JENNA = "CT_Jenna";  // Female tavern worker at West Tenebrae
 const string U8_CT_XAVIER = "CT_Xavier";  // Male Theurgist at Argentrock Isle
 const string U8_CT_TORWIN = "CT_Torwin";  // Male student Theurgist at Argentrock Isle
 const string U8_CT_MALCHIR = "CT_Malchir";  // Male master Sorcerer at Sorcerer's Enclave
@@ -57,7 +56,7 @@ const string U8_CT_BEREN = "CT_Beren";  // Male Sorcerer at Tenebrae and Sorcere
 
 // Creature Tags (Tenebrae Guards)
 // TODO: Label these based on guard position and duty (stand post or patrol).
-// TODO: From memory there were also some guards outside Tenebrae. Treasure Cove (Slayer) and Hall of Mountain King?
+// TODO: From memory there were also some guards outside Tenebrae. East Road, Treasure Cove (Slayer) and Hall of Mountain King?
 //const string U8_CT_GUARD0 = "CT_Guard0";  //  EW (At the eastern gates of Tenebrae towards the north)
 //const string U8_CT_GUARD1 = "CT_Guard1";  //  (At the southern gates of Tenebrae near the docks)
 //const string U8_CT_GUARD2 = "CT_Guard2";  //  (At the southern guard house in central Tenebrae)
@@ -141,6 +140,23 @@ const string U8_IT_BUCKETHELMET = "IT_BucketHelmet";
 // death disk (throwing knife instead?)
 // cracked gem or something, the small one
 // unstable gem or something, the big cluster one
+
+// Item Tags (Spells)
+// TODO: Get full list.
+const string U8_IT_SPELL_EARTH_OPENGROUND = "IT_SpEarthOpenGround";
+const string U8_IT_SPELL_EARTH_SPEAK = "IT_SpEarthSpeak";
+const string U8_IT_SPELL_EARTH_SKELETON = "IT_SpEarthSkeleton";
+const string U8_IT_SPELL_EARTH_GOLEM = "IT_SpEarthGolem";
+const string U8_IT_SPELL_AIR_HEAL = "IT_SpAirHeal";
+const string U8_IT_SPELL_AIR_WALK = "IT_SpAirWalk";
+const string U8_IT_SPELL_AIR_TRUTH = "IT_SpAirTruth";
+const string U8_IT_SPELL_FIRE_IGNITE = "IT_SpFireIgnite";
+const string U8_IT_SPELL_FIRE_EXTINGUISH = "IT_SpFireExtinguish";
+const string U8_IT_SPELL_FIRE_FLASH = "IT_SpFireFlash";
+const string U8_IT_SPELL_FIRE_EXPLOSION = "IT_SpFireExplosion";
+const string U8_IT_SPELL_WATER_BOLT = "IT_SpWaterBolt";  // Small lightning bolt (Mordea)
+const string U8_IT_SPELL_WATER_STRIKE = "IT_SpWaterStrike";  // Large lightning bolt with explosion (Devon)
+const string U8_IT_SPELL_WATER_WALK = "IT_SpWaterWalk";
 
 // Item Tags (Keys)
 const string U8_IT_KEYBEACHCHEST = "IT_KeyBeachChest";

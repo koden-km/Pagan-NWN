@@ -9,6 +9,13 @@ const string U8_PT_LEVER_PREFIX = "PT_Lever_Plateau";
 
 const string U8_LEVER_VARNAME_STATE = "bLeverActive";
 
+// TODO: Find some sound effect wav resources for these.
+// Example from nwnlexicon used "as_cv_gongring2" (a gong sound).
+// See: https://nwnlexicon.com/index.php?title=PlaySound
+// See: https://nwnlexicon.com/index.php?title=SoundObjectPlay
+const string U8_SFX_LEVER_STUCK = "";  // TODO: Need something like a clunk sound.
+const string U8_SFX_LEVER_MOVING = "";  // TODO: Need something like a chain/pully sound.
+
 void main()
 {
 	// TODO: activate objects with same tag, or something?
@@ -24,6 +31,7 @@ void main()
 
 		// TODO: Play a clunk (nothing happens) sound then exit.
 		// Not sure if the lever animates by default or if that is only through script. May want to reset it.
+		// PlaySound(U8_SFX_LEVER_STUCK);
 
 		return;
 	}
