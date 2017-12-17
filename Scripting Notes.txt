@@ -3,7 +3,20 @@ Notes
 
 Misc notes and script snippets.
 
-KM: Tag names are limited to 32 characters?
+Tag names are limited to 32 characters.
+Script file names are limited to 16 characters.
+
+
+
+Things to figure out and/or confirm before getting in to deep
+-------------------------------------------------------------
+
+* Can NPCs waypoint through area transitions?
+
+* If i need an NPC from other areas for cut scenes or locations during time schedule should I:
+  teleport them, walk them, or spawn a clone? (depends on above if NPCs can transition).
+
+* Tag names are limited to 32 characters
 
 
 
@@ -49,18 +62,6 @@ Aiming for play through of U8 story. Including learning the spells of Pagan and 
 
 The ghost side quest. Apparently the herdsman family and Kilandra are involed in the ghost side quest.
 Kilandra's daughter has/had the key for the door. Her grave is in the cemetery.
-
-
-
-Things to figure out and/or confirm before getting in to deep
--------------------------------------------------------------
-
-* Can NPCs waypoint through area transitions?
-
-* If i need an NPC from other areas for cut scenes or locations during time schedule should I:
-  teleport them, walk them, or spawn a clone? (depends on above if NPCs can transition).
-
-* Tag names are limited to 32 characters?
 
 
 
