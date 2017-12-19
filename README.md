@@ -1,13 +1,17 @@
 Pagan-NWN
 =========
 
-An old attempt at remaking Ultima 8 Pagan with the Neverwinter Nights toolkit.
+An attempt at remaking Ultima 8 Pagan with the Neverwinter Nights toolkit.
 
-I last worked on this some time in 2010.
-I only used the built in tilesets and assets that were available. I can't remember if it needed the expansion packs.
-Most of the map entries/exits should be connected to walk through the world. I don't think any of the houses in towns have indoor areas yet.
-I don't think i had any NPC's or mobs in there yet.
+I am only using the built in NWN tilesets, creatures and items that are available in the Diamond Edition and upcomming Enhanced Edition.
+I would love a custom Pagan tileset that better matches the visual style of the original game, but I do not have time to make one.
+If you can help out, create an issue on this GitHub project to discuss. Mostly just need a modified Rural tileset with some dirt/stone surfaces and cobble roads.
+I found some of the old Exile (Ultima 8 remake in NWN) music files and hope to include them in this project.
 
-**Update March 2014**
-I fixed most of the missing map area links and reset the module starting position back to the Docks.
-Treasure Cove (Slayer cave) and Stratos areas are the only ones built but not linked. The scripts to get to them don't seem to work.
+Most of the main area maps have been prototyped and the entry/exits connnected, but basically no houses in towns have indoor areas yet.
+I will review the current maps and update them as I learn more about the scripting features available that are needed to recreate Pagan.
+There are only a few test mobs currently in game.
+
+**Update December 2017**
+With the announcement of Neverwinter Nights Enhanced Edition this remake project may become active again.
+The biggest issue I ran into last time I was working on this, was that it was becoming hard to run the original NWN game and tools on newer operating systems.

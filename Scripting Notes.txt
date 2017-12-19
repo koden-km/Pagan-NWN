@@ -3,8 +3,10 @@ Notes
 
 Misc notes and script snippets.
 
+
+Limits:
 Tag names are limited to 32 characters.
-Script file names are limited to 16 characters.
+Script file names are limited to 16 characters and all lowercase.
 
 
 
@@ -16,21 +18,48 @@ Things to figure out and/or confirm before getting in to deep
 * If i need an NPC from other areas for cut scenes or locations during time schedule should I:
   teleport them, walk them, or spawn a clone? (depends on above if NPCs can transition).
 
-* Tag names are limited to 32 characters
+* Script file name encoding to fit into the 16 character limit. Names must be lowercase.
+  - Everything begins with "u8" if possible to namespace.
+  - Module scripts prefix with "mod".
+    + "u8_mod_act_item" or "u8_mod_onactitem"
+  - Area scripts
+    + "u8_ar_plat_ent"  // OnEnter
+    + "u8_ar_plat_exit"  // OnExit
+    + "u8_ar_plat_beat"  // OnHeartbeat
+    + "u8_ar_plat_user"  // OnUserDefined
+  - Creatures (characters/mobs) OnUserDefined prefix with "cr".
+    + "u8_cr_devon"
+	+ "u8_cr_mythran"
+	+ "u8_cr_hydros"
+	+ "u8_cr_skeleton"
+	+ "u8_cr_ghoul"
+  - Triggers prefix with "tr".
+    + "u8_tr_docks_cs1"  // docks cutscene 1: Toran exe
+    + "u8_tr_docks_cs2"  // docks cutscene 2: Devon exe
+    + "u8_tr_recallpad"  // find recall pad. Trigger tag name is used for specific pad logic.
+	+ "u8_tr_redshroom"  // red mushroom trigger trap
+  - Placeable prefix with "pl".
+    + "u8_pl_dartboard"
+	+ "u8_pl_lever"
+	+ "u8_pl_pltcavelvr" or "u8_pl_pclv"  // Plateau cave levers, they all share same script like tut.
+  - Conversation action prefix with "ca".
+    + "u8_ca_recallxxxx"  // where xxxx is: tene, plat, isle, crag, lake, cata, hall, vale.
+	+ "u8_ca_myt_grec"  // 3 digit character/creature, 'g' to give, 3 digit thing. eg. mythran give recall
+	+ "u8_ca_dev_gkey"
+  - Libraries (use as includes) prefix with "lib". Might need these for Items since they merge into Module scripts.
+    + "u8_lib_earth"  // Magic library. Spell creation and casting.
+    + "u8_lib_air"  // Magic library. Spell creation and casting.
+    + "u8_lib_water"  // Magic library. Spell creation and casting.
+    + "u8_lib_fire"  // Magic library. Spell creation and casting.
+    + "u8_lib_ether"  // Magic library. Spell creation and casting.
+    + "u8_lib_recallgem"
+    + "u8_lib_slayer"  // If custom scripting needed for the 1 in 10 fatal chance.
+    + "u8_lib_flamestng"  // If custom thing needed to create fire on ground after strike.
 
 
 
-Credit
-------
-
-- Celowin's scripting tutorial
-- Beamdog for Enhanced Edition
-- Ultima Codex for keeping Ultima alive
-
-
-
-Naming Conventions
-------------------
+Variable Naming Conventions
+---------------------------
 https://nwnlexicon.com/index.php?title=Naming_Conventions
 
 +---------------+--------+-------------+
@@ -46,10 +75,23 @@ https://nwnlexicon.com/index.php?title=Naming_Conventions
 | location      | loc    | locJumpTo   |
 | object        | o      | oPC         |
 | string        | s      | sName       |
-| struct        | str    |  strPerson  |
+| struct        | str    | strPerson   |
 | talent        | t      | tSkillHide  |
 | vector        | v      | vVelocity   |
 +---------------+--------+-------------+
+
+
+
+Credits
+-------
+
+- Lord British, Origin and Electronic Arts for Ultima 8
+- Bioware for Neverwinter Nights
+- Beamdog for Neverwinter Nights Enhanced Edition
+- Celowin for scripting tutorials
+- Ultima Codex for keeping Ultima alive
+- http://gigi.nullneuron.net/ultima/ for keeping Ultima alive
+- Exile remake for inspiration and music
 
 
 
@@ -118,6 +160,38 @@ Mentioned here: https://nwnlexicon.com/index.php?title=An_Introduction_To_Tile_M
 
 This will allow me to build in some plot skipper tools to jump ahead in the plot and test things better.
 One of the main things to skip would be the docks scene so that the chracters are all in place for the regular game.
+
+
+
+Script Events
+-------------
+
+Module Properties:
+- OnAcquireItem (has a default)
+- ObActivateItem (has a default)
+- OnClientEnter (has a default)
+- OnClientLeave
+- OnCutsceneAbort
+- OnHeartbeat
+- OnModuleLoad (has a default)
+- OnPlayerChat
+- OnPlayerDeath (has a default)
+- OnPlayerDying (has a default)
+- OnPlayerEquipItem (has a default)
+- OnPlayerLevelUp
+- OnPlayerRespawn (has a default)
+- OnPlayerRest (has a default)
+- OnPlayerUnEquipItem (has a default)
+- OnUnAcquireItem (has a default)
+- OnUserDefined
+
+Area Properties:
+- OnEnter
+- OnExit
+- OnHeartbeat
+- OnUserDefined
+
+Modules and Areas also both have option for setting initial variables.
 
 
 
@@ -580,6 +654,14 @@ ActionDoCommand(SetLocal<T>(object oObject, string sVarName, T tValue))
 ActionDoCommand(SetLocalInt(object oObject, string sVarName, int nValue))
 ActionDoCommand(SetLocalString(object oObject, string sVarName, string sValue))
 
+U8 School = NWN Class+School
+They won't actually use the spells from the NWN classes, its just for their identity.
+- Earth/Necromancer = Wizard+Necromancy
+- Air/Theurgist = Wizard+Conjuration
+- Water/Tempest = Wizard+Evocation
+- Fire/Sorcerer = Wizard+Evocation
+- Zealan = Druid?
+
 
 
 Tavern drunk
@@ -644,7 +726,6 @@ void TrapDoElectricalDamage(
 
 Zealan Gods/Goddesses
 ---------------------
-
 Use statues, add some spell particle effects to make them stand out.
 Maybe different colours for each one? I remember some red and blue sparkles.
 
@@ -653,12 +734,22 @@ Screenshots of the Lost Value show them trapped in some kind of yellow crystals,
 
 
 
+Carthax Lake
+------------
+Might use the "Underdark" tileset for this area, i think it allows raised areas to make the dry lake?
+
+
+
 Lost Vale
 ---------
-
 Read the kind of finally released story docs and see if it mentions how to get there. eg. through
 the plateau double doors.
+
 What unlocks them? If not mentioned, then consider using the unnamed ring like item from the
 waterfall cave, which is below the plateau lake; and/or use the EAC item in Mythran's house, which
 is related to the Ultima 7 power generators in the Guardian questline? It was the Guardian who gave
 power to the Titan's on Pagan afterall, which allowed them to fight the Zealan gods.
+
+I think the Lost Vale is a dry desolate area, the water was removed by Hydros. All the remaining
+screenshots show the ground areas as dirt and rock. There are cloud areas, yellow stone areas and
+white marble structures.

@@ -1,10 +1,6 @@
 // Ultima 8 Remake
 // Constants to be included by other script files.
 
-// Not sure why these user events are not defined somewhere standard in NWN.
-const int U8_USEREVENT_ONHEARTBEAT = 1001;
-const int U8_USEREVENT_ONPERCEPTION = 1002;
-
 // TODO: Split these into multiple specific constant files.
 // Then have this file be the generic helper that includes all sub constant files.
 // #include "u8_char_constants"
@@ -157,6 +153,8 @@ const string U8_IT_SPELL_FIRE_EXPLOSION = "IT_SpFireExplosion";
 const string U8_IT_SPELL_WATER_BOLT = "IT_SpWaterBolt";  // Small lightning bolt (Mordea)
 const string U8_IT_SPELL_WATER_STRIKE = "IT_SpWaterStrike";  // Large lightning bolt with explosion (Devon)
 const string U8_IT_SPELL_WATER_WALK = "IT_SpWaterWalk";
+const string U8_IT_SPELL_ETHER_FOO = "IT_SpEtherFoo";  // Placeholder, look up real spells.
+const string U8_IT_SPELL_ETHER_BAR = "IT_SpEtherBar";  // Placeholder, look up real spells.
 
 // Item Tags (Keys)
 const string U8_IT_KEYBEACHCHEST = "IT_KeyBeachChest";

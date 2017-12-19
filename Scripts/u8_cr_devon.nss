@@ -1,5 +1,5 @@
 // Ultima 8 Remake
-// Character Devon OnUserDefined
+// Creature Devon OnUserDefined
 //
 // Enable user defined scripts in OnSpawn by saving a copy and uncommenting the SetSpawnInCondition line near the bottom.
 // Then uncomment any OnXXXX events that are needed.
@@ -29,25 +29,28 @@ const string U8_DEVON_VARNAME_METPC = "bMetPC";
 // Other local vars can be done in the function that needs it.
 
 // Function prototypes.
-void DoOnHeartbeat();
-void DoOnPerceive();
-void DoIdleAtBeach();
+void U8DevonOnHeartbeat();
+void U8DevonOnPerceive();
+void U8DevonIdleAtBeach();
 
 void main()
 {
-	// TODO: Switch on user defined event id...
-	// Call a local handler function to keep things tidy.
-
 	int nOnEvent = GetUserDefinedEventNumber();
 	switch (nOnEvent)
 	{
-		case U8_USEREVENT_ONHEARTBEAT: DoOnHeartbeat(); break;
-		case U8_USEREVENT_ONPERCEPTION: DoOnPerception(); break;
+		case EVENT_HEARTBEAT: U8DevonOnHeartbeat(); break;
+		case EVENT_PERCEIVE: U8DevonOnPerceive(); break;
+		//case EVENT_END_COMBAT_ROUND: U8DevonOnCombatRoundEnd(); break;
+		//case EVENT_DIALOGUE: U8DevonOnConversation(); break;
+		//case EVENT_ATTACKED: U8DevonOnPhysicalAttacked(); break;
+		//case EVENT_DAMAGED: U8DevonOnDamaged(); break;
+		//case EVENT_DISTURBED: U8DevonOnDisturbed(); break;
+		//case EVENT_SPELL_CAST_AT: U8DevonOnSpellCastAt(); break;
 		default: U8DebugUnhandledUserDefinedEventNumber(nOnEvent, OBJECT_SELF); break;
 	}
 }
 
-void DoOnHeartbeat()
+void U8DevonOnHeartbeat()
 {
 	// Idle actions?
 	// Maybe comment to self rarely. If PC is stealth this will make the NPC seem more alive and a part of the world.
@@ -58,11 +61,11 @@ void DoOnHeartbeat()
 	{
 		// TODO: check area/time of day.
 		// string sAreaTag = GetMyArea(OBJECT_SELF);
-		DoIdleAtBeach();
+		U8DevonIdleAtBeach();
 	}
 }
 
-void DoOnPerception()
+void U8DevonOnPerceive()
 {
 	// TODO:
 	// if idle state and see's someone, say a generic greeting.
@@ -98,7 +101,7 @@ void DoOnPerception()
 	}
 }
 
-void DoIdleAtBeach()
+void U8DevonIdleAtBeach()
 {
 	int bMetPC = GetLocalInt(OBJECT_SELF, U8_DEVON_VARNAME_METPC);
 

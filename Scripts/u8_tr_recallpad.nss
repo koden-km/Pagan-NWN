@@ -1,8 +1,9 @@
 // Ultima 8 Remake
-// Trigger Recall Portal OnEnter
+// Trigger Recall portal pad OnEnter
 
 #include "u8_constants"
 #include "u8_lib"
+#include "u8_lib_recallgem"
 
 const string U8_PORTAL_VARNAME_STATE = "bPortalActive";
 
