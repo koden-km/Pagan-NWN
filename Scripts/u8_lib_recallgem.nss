@@ -69,7 +69,7 @@ string U8GetRecallPortalWaypointTagFromTriggerTag(string sPortalTriggerTag)
 }
 
 // Try teleport player to recall portal matching the given portal waypoint tag.
-void U8DoRecallToPortal(object oPC, string sPortalWaypointTag)
+void U8ActionRecallToPortal(object oPC, string sPortalWaypointTag)
 {
 	object oPortalWaypoint = GetWaypointByTag(sPortalWaypointTag);
 	if (GetIsObjectValid(oPC) && GetIsObjectValid(oPortalWaypoint))

@@ -753,3 +753,12 @@ power to the Titan's on Pagan afterall, which allowed them to fight the Zealan g
 I think the Lost Vale is a dry desolate area, the water was removed by Hydros. All the remaining
 screenshots show the ground areas as dirt and rock. There are cloud areas, yellow stone areas and
 white marble structures.
+
+
+
+Inventory Scripts
+-----------------
+https://nwnlexicon.com/index.php?title=Globals
+
+If there is a need to loop through inventory slots, this is a constant that can be used to limit it:
+NUM_INVENTORY_SLOTS
