@@ -166,7 +166,7 @@ One of the main things to skip would be the docks scene so that the chracters ar
 Script Events
 -------------
 
-Module Properties:
+Module Events:
 - OnAcquireItem (has a default)
 - ObActivateItem (has a default)
 - OnClientEnter (has a default)
@@ -185,13 +185,28 @@ Module Properties:
 - OnUnAcquireItem (has a default)
 - OnUserDefined
 
-Area Properties:
+Area Events:
 - OnEnter
 - OnExit
 - OnHeartbeat
 - OnUserDefined
 
-Modules and Areas also both have option for setting initial variables.
+Creature Scripts:
+- OnBlocked (has a default)
+- OnCombatRoundEnd (has a default)
+- OnConversation (has a default)
+- OnDamaged (has a default)
+- OnDeath (has a default)
+- OnDisturbed (has a default)
+- OnHeartbeat (has a default)
+- OnPerception (has a default)
+- OnPhysicalAttacked (has a default)
+- OnRested (has a default)
+- OnSpawn (has a default)
+- OnSpellCastAt (has a default)
+- OnUserDefined (has a default)
+
+Modules, Areas and Creatures all have option for setting initial variables.
 
 
 
