@@ -1,28 +1,6 @@
-//::///////////////////////////////////////////////
-//:: Example Item Event Script
-//:: x2_it_example
-//:: Copyright (c) 2003 Bioware Corp.
-//:://////////////////////////////////////////////
-/*
-    This is an example on how to use the
-    new default module events for NWN to
-    have all code concerning one item in
-    a single file.
-
-    Note that this system only works, if
-    the following events set on your module
-
-    OnEquip      - x2_mod_def_equ
-    OnUnEquip    - x2_mod_def_unequ
-    OnAcquire    - x2_mod_def_aqu
-    OnUnAcqucire - x2_mod_def_unaqu
-    OnActivate   - x2_mod_def_act
-
-*/
-//:://////////////////////////////////////////////
-//:: Created By: Georg Zoeller
-//:: Created On: 2003-09-10
-//:://////////////////////////////////////////////
+// Ultima 8 Remake
+// Item Event Script
+// Recall Gem
 
 #include "x2_inc_switches"
 
@@ -51,6 +29,8 @@ void main()
     {
         oPC = GetItemActivator();
         oItem = GetItemActivated();
+
+        AssignCommand(oPC, ActionStartConversation(oPC, "cv_recallgem", TRUE, FALSE));
     }
 
     // * This code runs when the item is equipped
@@ -82,7 +62,7 @@ void main()
     else if (nEvent == X2_ITEM_EVENT_UNACQUIRE)
     {
         oPC = GetModuleItemLostBy();
-        oItem = GetModuleItemLost();
+        oItem  = GetModuleItemLost();
     }
 
     //* This code runs when a PC or DM casts a spell from one of the

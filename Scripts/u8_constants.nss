@@ -53,7 +53,7 @@ const string U8_CT_BEREN = "CT_Beren";  // Male Sorcerer at Tenebrae and Sorcere
 // Creature Tags (Tenebrae Guards)
 // TODO: Label these based on guard position and duty (stand post or patrol).
 // TODO: From memory there were also some guards outside Tenebrae. East Road, Treasure Cove (Slayer) and Hall of Mountain King?
-//const string U8_CT_GUARD0 = "CT_Guard0";  //  EW (At the eastern gates of Tenebrae towards the north)
+//const string U8_CT_GUARD0 = "CT_Guard0";  //  (At the eastern gates of Tenebrae towards the north)
 //const string U8_CT_GUARD1 = "CT_Guard1";  //  (At the southern gates of Tenebrae near the docks)
 //const string U8_CT_GUARD2 = "CT_Guard2";  //  (At the southern guard house in central Tenebrae)
 //const string U8_CT_GUARD3 = "CT_Guard3";  //  (At the northern guard house in central Tenebrae)
@@ -137,8 +137,56 @@ const string U8_IT_BUCKETHELMET = "IT_BucketHelmet";
 // cracked gem or something, the small one
 // unstable gem or something, the big cluster one
 
+// Item Tags (Reagents)
+// Blood
+// Bone
+// Wood
+// Dirt
+// Blackmoor
+// ExHood
+
 // Item Tags (Spells)
-// TODO: Get full list.
+// TODO: Get full list from Chronicle of Pagan by Bentic.
+// Earth:
+// - Mask Of Death
+// - Call Quake
+// - Death Speak
+// - Rock Flesh
+// - Summon Dead
+// - Open Ground
+// - Create Golem
+// - Withstand Death
+// - Grand Peace
+// Air:
+// - Divination
+// - Healing Touch
+// - Aerial Servant
+// - Reveal
+// - Restoration
+// - Fade from Sight
+// - Air Walk
+// - Hear Truth
+// - Intervention
+// - Resurrection
+// Fire:
+// - Extinguish
+// - Ignite
+// - Flash
+// - Flame Bolt
+// - Endure Heat
+// - Fire Shield
+// - Armor of Flames
+// - Create Fire
+// - Explosion
+// - Summon Daemon
+// - Banish Daemon
+// - Conflagration
+// Ether:
+// - Confusion Blast
+// - Summon Creature
+// - Call Destruction
+// - Devastation
+// - Meteor Shower
 const string U8_IT_SPELL_EARTH_OPENGROUND = "IT_SpEarthOpenGround";
 const string U8_IT_SPELL_EARTH_SPEAK = "IT_SpEarthSpeak";
 const string U8_IT_SPELL_EARTH_SKELETON = "IT_SpEarthSkeleton";
@@ -153,6 +201,10 @@ const string U8_IT_SPELL_FIRE_EXPLOSION = "IT_SpFireExplosion";
 const string U8_IT_SPELL_WATER_BOLT = "IT_SpWaterBolt";  // Small lightning bolt (Mordea)
 const string U8_IT_SPELL_WATER_STRIKE = "IT_SpWaterStrike";  // Large lightning bolt with explosion (Devon)
 const string U8_IT_SPELL_WATER_WALK = "IT_SpWaterWalk";
+const string U8_IT_SPELL_WATER_BREATH = "IT_SpWaterBreath";
+const string U8_IT_SPELL_WATER_CREATESTORM = "IT_SpWaterCreateStorm";
+const string U8_IT_SPELL_WATER_CLEARSTORM = "IT_SpWaterClearStorm";
+const string U8_IT_SPELL_WATER_BREATH = "IT_SpWaterBreath";
 const string U8_IT_SPELL_ETHER_FOO = "IT_SpEtherFoo";  // Placeholder, look up real spells.
 const string U8_IT_SPELL_ETHER_BAR = "IT_SpEtherBar";  // Placeholder, look up real spells.
 
@@ -167,6 +219,7 @@ const string U8_IT_RECALLGEM = "IT_RecallGem";
 const string U8_IT_SKULLOFQUAKES = "IT_SkullOfQuakes";
 const string U8_IT_EAC = "IT_EAC";  // The shape shifting EAC logo object. Cube, Tetrahedron, Sphere.
 const string U8_IT_CEREMONIALSHIELD = "IT_CeremonialShield";  // The zealan shield. At Mythran's and Zealan shrine.
+const string U8_IT_CEREMONIALDAGGER = "IT_CeremonialDagger";  // The Necromancer dagger. The queen has it.
 
 // Waypoint Tags
 // TODO: might just use the single point things and let them roam. eg. "POST_CT_DEVON" (at beach) and "NIGHT_CT_DEVON" (at house).
