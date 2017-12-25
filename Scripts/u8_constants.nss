@@ -210,6 +210,7 @@ const string U8_IT_SPELL_ETHER_BAR = "IT_SpEtherBar";  // Placeholder, look up r
 
 // Item Tags (Keys)
 const string U8_IT_KEYBEACHCHEST = "IT_KeyBeachChest";
+const string U8_IT_KEYBLANK = "IT_KeyBlank";  // A hidden key behind wall of Tenebrae palace Tear of Seas chest. See notes.
 
 // Item Tags (Books)
 const string U8_IT_BENTICJOURNAL = "IT_BenticJournal";  // Has proof Devon is Tempest

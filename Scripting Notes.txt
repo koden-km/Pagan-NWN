@@ -726,6 +726,26 @@ So its probalby worth doing them as 3 separate ones.
 
 
 
+Traps and dangers in U8
+-----------------------
+Electric Gateways - 5-10 electric damage
+Exploding Chests - 5-20 fire damage
+Exploding Books - 5-20 fire damage
+Fire Mortar - 5-20 fire damage
+Fire Shrooms (red mushroom) - fire damage, but unsure of amount
+Fire Shooters (wall) - 5-20 fire damage
+Fire Spouts (ground) - 5-20 fire damage
+Floor Spikes - 3-5 piercing damage
+Force Fields (blue) - 5-10 (sonic?) damage
+Spiked Roller - 2-5 piercing damage
+Stalactites - 15 (bludgeon?) damage (could mark with water drop effect?)
+Meteor - 10-30 fire damage
+Lightning - death / 100 electirc damage
+Fire - 5-10 fire damage
+Red Lava - 1-2 fire damage
+Green Potion - 10-20 damage
+
+
 Electric Traps
 --------------
 https://nwnlexicon.com/index.php?title=TrapDoElectricalDamage
@@ -806,3 +826,120 @@ See file: x2_mod_def_load (Look in "All Modules")
    }
 
 So "IT_RecallGem" will auto link to script: "it_recallgem".
+
+
+
+Some nice script guides for NPC features
+----------------------------------------
+https://www.gamefaqs.com/pc/188666-neverwinter-nights/faqs/22932
+
+For example, it has a nice blacksmith script. The blacksmith will work and make comments until
+the player comes close, at which point he will stop and wait for interaction.
+
+
+
+Books and scrolls of Pagan
+--------------------------
+http://gigi.nullneuron.net/ultima/u8/u8writ.php
+
+They are presented as scrolls and books just as they appear in the game.
+This will be a good reference for formatting to match the new lines and paragraphs.
+
+
+
+Hidden Items
+------------
+http://gigi.nullneuron.net/ultima/u8/u8hidden.php
+
+The Key Blank might be difficult to implement if door unlocking is based on tags.
+Maybe this will be a targeted action useable item to unlock doors?
+
+
+
+Item Prices
+-----------
+http://infinitron.nullneuron.net/u8eco.html
+
+Weapons at Korick shop:
+Dagger - 5 Obsidian Coins
+Mace - 15 Obsidian Coins
+Axe - 25 Obsidian Coins
+Sabre - 75 Obsidian Coins
+Scimitar - 90 Obsidian Coins
+Long Sword - 125 Obsidian Coins
+
+Armour at Korick shop:
+Plate Arm Guards - 11 Obsidian Coins
+Plate Leggings - 12 Obsidian Coins
+Triangle Shield - 12 Obsidian Coins
+Great Helm - 13 Obsidian Coins
+
+Armour at Darion training room:
+Leather Arm Guards - 5 Obsidian Coins
+Leather Leggings - 10 Obsidian Coins
+Iron Helm - 2 Obsidian Coins
+Leather Armor - 6 Obsidian Coins
+
+Training at Darion training room:
+A few minutes of training - 50 Obsidian Coins
+
+Spells at Mythran house (must be brought in order to unlock next):
+Confusion Blast - 50 Obsidian Coins
+Meteor Shower - 100 Obsidian Coins
+Summon Creature - 100 Obsidian Coins
+Call Destruction - 150 Obsidian Coins
+Devastation - 1000 Obsidian Coins
+Ethereal Travel - 250 Obsidian Coins
+
+Necromancy Reagents at Mythran house:
+Bone - 10 Obsidian Coins
+Executioner's Hood - 10 Obsidian Coins
+Blackmoor - 10 Obsidian Coins
+
+Sorcery Reagents at Mythran house:
+Obsidian - 15 Obsidian Coins
+Brimstone - 15 Obsidian Coins
+Pumice - 15 Obsidian Coins
+Ash - 15 Obsidian Coins
+Pig Iron - 15 Obsidian Coins
+
+Thaumaturgy Reagents at Mythran house:
+Eye of Newt - 25 Obsidian Coins
+Bat Wing - 30 Obsidian Coins
+Serpent Scale - 25 Obsidian Coins
+Dragon Blood - 40 Obsidian Coins
+
+Scrolls at Mythran house:
+Scroll of Dispelling Magical Portals - 50 Obsidian Coins
+
+Jewelery at Rhian house East Tenebrae:
+[ Jewel - Buying Price - Selling Price ]
+Dark Diamond - 45 Obsidian Coins - 12 Obsidian Coins
+Dancing Ruby - 20 Obsidian Coins - 18 Obsidian Coins
+Gemstone Necklace - 36 Obsidian Coins - 6 Obsidian Coins
+Gemstone Ring - 22 Obsidian Coins - 3 Obsidian Coins
+Amethyst Gem - n/a - 9 Obsidian Coins
+Stone Amber - n/a - 15 Obsidian Coins
+Obsidian Starstone - n/a - 21 Obsidian Coins
+Bright Diamond - n/a - 24 Obsidian Coin
+
+Clothes at Rhian house East Tenebrae:
+Cloak - 6 Obsidian Coins
+Shirt - 4 Obsidian Coins
+Vest - 7 Obsidian Coins
+
+Food at Jenna in West Tenebrae tavern:
+Fish - 1 Obsidian Coin
+Toraxen Jerky - 3 Obsidian Coins
+Kith Filet - 8 Obsidian Coins
+Bread - 1 Obsidian Coin
+Mushroom - 1 Obsidian Coin
+Tuber - 1 Obsidian Coin
+Toraxen Cheese - 1 Obsidian Coin
+
+Drinks at Orlock/Jenna in West Tenebrae tavern (a bar tab is also available):
+Tenebraen Ale - 2/1 Obsidian Coins (Orlock 2, Jenna 1)
+Blackwine - 3 Obsidian Coins
+Hurricane - 2 Obsidian Coins
+Breath o' Spirit - 2 Obsidian Coins
+Cloven Hoof - 5 Obsidian Coins

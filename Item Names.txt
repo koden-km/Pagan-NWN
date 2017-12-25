@@ -1,0 +1,48 @@
+Using the default modern script features, items that will be useable will have the their tag used as their script name.
+Eg. recal gem with tag "IT_RecallGem" would have to have a script named "it_recallgem" (all lower case) to run the on activated script features.
+The script names need to be 16 characters max, so I need to come up with a good tagging system so the scripts can be named well.
+
+All items will need to have a 16 character maximum tag name if they will be useable. Normally tags can be 32 characters.
+Might need to drop the "u8" prefix just to save space and allow better description.
+A list of all items might make this easier to deicde on though.
+
+List of all "item" tags/scripts
+===============================
+
+Sixteen character marker
+<23456789012345>
+
+Misc:
+<-------------->
+RecallGem
+SkullOfQuakes    // Not sure if this will need to be useable. It might just be something to put in an altar to shake and open the door.
+
+Food (if useable for eating?)
+<-------------->
+Fish
+ToraxJerky
+KithFilet
+Bread
+MushroomBlue    // Regular food mushroom. Chance to restore health or make vision odd (use colorspray effect in NWN?) when eaten.
+MushroomYel1    // Adventurer mushroom. Restores health when eaten.
+MushroomYel2    // Poisonous mushroom. Damages health when eaten.
+Tuber
+ToraxCheese
+
+
+Drinks (already useable in NWN from memory, but not sure if made character drunk, so might need to be custom useable?)
+<-------------->
+TenebraenAle
+Blackwine
+Hurricane
+BreathOSpirit
+ClovenHoof
+
+Throwable
+<-------------->
+RedMushroom     // 5-20 damage in U8. Might be hard to do as pickups. Could be done with Aerial Servant in U8.
+BottleOfOil     // 5-20 damage in U8.
+JugOfOil        // 20-32 damage in U8.
+FireGem         // 5-20 damage in U8.
+ChaosGem        // Explodes and creats 4 FireGem's that then explode.
+DeathDisk       // 5-20 damage in U8.
