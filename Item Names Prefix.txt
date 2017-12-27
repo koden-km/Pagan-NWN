@@ -17,6 +17,18 @@ u8_it_KeyNecro  |  // Necromancer wand/rod thing. It needs to be useable to craf
 u8_it_KeyBlank  |  // The mystery blank key hidden behind wall of Tenebrae palace. It might need to be a useable action item to unlock doors with different tag.
 <-------------->|
 
+# Keys
+# [IK for Item Key (not useable, but here for naming)
+<-------------->|
+u8_ik_DockChest |
+<-------------->|
+
+# Books
+# [IB for Item Book (not useable, except for exploding joke book?, but here for naming)
+<-------------->|
+u8_ib_BenticJrnl|
+<-------------->|
+
 # Food (If useable for eating? I don't remember if NWN had food?)
 # [IF for Item Food]
 <-------------->|

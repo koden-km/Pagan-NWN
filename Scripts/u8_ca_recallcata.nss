@@ -7,17 +7,17 @@
 
 void main()
 {
-	object oPC = GetPCSpeaker();
-	if (GetIsPC(oPC))
-	{
-		U8ActionRecallToPortal(oPC, U8_WP_PORTAL_CATACOMBS);
-	}
+    object oPC = GetPCSpeaker();
+    if (GetIsPC(oPC))
+    {
+        U8ActionRecallToPortal(oPC, U8_WP_PORTAL_CATACOMBS);
+    }
 
-	// Or instead, do it for all Players?
-	//object oPC = GetFirstPC();
-	//while (GetIsObjectValid(oPC))
-	//{
-	//	U8ActionRecallToPortal(oPC, U8_WP_PORTAL_CATACOMBS);
-	//	oPC = GetNextPC();
-	//}
+    // Or instead, do it for all Players?
+    //object oPC = GetFirstPC();
+    //while (GetIsObjectValid(oPC))
+    //{
+    //   U8ActionRecallToPortal(oPC, U8_WP_PORTAL_CATACOMBS);
+    //   oPC = GetNextPC();
+    //}
 }

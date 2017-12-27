@@ -6,11 +6,12 @@
 
 int StartingConditional()
 {
-	object oPC = GetPCSpeaker();
-	if (GetIsPC(oPC))
-	{
-		return U8HasFoundRecalPortal(oPC, U8_WP_PORTAL_TENEBRAE);
-	}
+    int nResult = FALSE;
+    object oPC = GetPCSpeaker();
+    if (GetIsPC(oPC))
+    {
+        nResult = U8GetHasFoundRecalPortal(oPC, U8_WP_PORTAL_TENEBRAE);
+    }
 
-	return FALSE;
+    return nResult;
 }
