@@ -1,0 +1,110 @@
+A version of "Item Names" with the "u8" module prefix.
+
+===============================
+
+# Sixteen character width marker.
+<23456789012345>|
+
+# Misc
+# [IT for ITem (generic)]
+<-------------->|
+u8_it_RecallGem |
+u8_it_SkullQuake|  // Not sure if this will need to be useable. It might just be something to put in an altar to earthquake and open the door.
+u8_it_MorphShape|  // The morphing shape item in Mythrans house. Old EAC logo. On use it bows and says message.
+u8_it_KeyCaretkr|  // Necromancer wand/rod thing. It needs to be useable to craft Earth spells. A special tagged bag will be used for mixing. For auto open tagged doors, these might need to share tag/script?
+u8_it_KeyScion  |  // Necromancer wand/rod thing. It needs to be useable to craft Earth spells. A special tagged bag will be used for mixing. For auto open tagged doors, these might need to share tag/script?
+u8_it_KeyNecro  |  // Necromancer wand/rod thing. It needs to be useable to craft Earth spells. A special tagged bag will be used for mixing. For auto open tagged doors, these might need to share tag/script?
+u8_it_KeyBlank  |  // The mystery blank key hidden behind wall of Tenebrae palace. It might need to be a useable action item to unlock doors with different tag.
+<-------------->|
+
+# Food (If useable for eating? I don't remember if NWN had food?)
+# [IF for Item Food]
+<-------------->|
+u8_if_Fish      |
+u8_if_ToraxJerky|
+u8_if_KithFilet |
+u8_if_Bread     |
+u8_if_MushroomB |  // Regular food mushroom. Chance to restore health or make vision odd (use colorspray effect in NWN?) when eaten.
+u8_if_MushroomYA|  // Adventurer mushroom. Restores health when eaten.
+u8_if_MushroomYP|  // Poisonous mushroom. Damages health when eaten.
+u8_if_Tuber     |
+u8_if_ToraxChees|
+<-------------->|
+
+# Drinks (Already useable in NWN from memory, but not sure if made character drunk, so might need to be custom useable?)
+# [ID for Item Drink]
+<-------------->|
+u8_id_TenebrAle |
+u8_id_Blackwine |
+u8_id_Hurricane |
+u8_id_BreathSprt|
+u8_id_ClovenHoof|
+<-------------->|
+
+# Throwable (I think NWN supports throwable grenade like things?)
+# [IX for Item eXplode]
+<-------------->|
+u8_ix_RedShroom |
+u8_ix_BottleOil |
+u8_ix_JugOil    |
+u8_ix_FireGem   |
+u8_ix_ChaosGem  |
+u8_ix_DeathDisk |
+<-------------->|
+
+# Earth Spells
+# [IS for Item Spell]
+<-------------->|
+u8_is_MaskDeath |
+u8_is_CallQuake |
+u8_is_DeathSpeak|
+u8_is_RockFlesh |
+u8_is_SummonDead|
+u8_is_OpenGround|
+u8_is_CreatGolem|
+u8_is_WthstndDth|
+u8_is_GrandPeace|
+<-------------->|
+
+# Air spells
+# [IS for Item Spell]
+<-------------->|
+u8_is_Divination|
+u8_is_HealTouch |
+u8_is_AerialServ|
+u8_is_Reveal    |
+u8_is_Restorat  |
+u8_is_FadeSight |
+u8_is_AirWalk   |
+u8_is_HearTruth |
+u8_is_Intervent |
+u8_is_Resurrect |
+<-------------->|
+
+# Fire spells
+# [IS for Item Spell]
+<-------------->|
+u8_is_Extinguish|
+u8_is_Ignite    |
+u8_is_Flash     |
+u8_is_FlameBolt |
+u8_is_EndureHeat|
+u8_is_FireShield|
+u8_is_ArmorFlame|
+u8_is_CreateFire|
+u8_is_Explosion |
+u8_is_SumDaemon |
+u8_is_BanDaemon |
+u8_is_Conflag   |
+<-------------->|
+
+# Ether spells
+# [IS for Item Spell]
+<-------------->|
+u8_is_ConfuBlast|
+u8_is_SumCreatur|
+u8_is_CallDstrct|
+u8_is_Devastate |
+u8_is_MeteorShwr|
+<-------------->|
+

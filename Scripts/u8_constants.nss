@@ -37,7 +37,7 @@ const string U8_CT_CORINTH = "CT_Corinth";  // Female Torax farmer in Herdsman's
 const string U8_CT_KILANDRA = "CT_Kilandra";  // Female crazy fish lady at Fisherman's Reef
 const string U8_CT_RHIAN = "CT_Rhian";  // Female Jeweler/Tailor at East Tenebrae
 const string U8_CT_SHAANA = "CT_Shaana";  // Female Executioner at West Tenebrae
-const string U8_CT_LOTHIAN = "CT_Vividos";  // Female Necromancer
+const string U8_CT_LOTHIAN = "CT_Lothian";  // Female Necromancer
 const string U8_CT_VIVIDOS = "CT_Vividos";  // Male Necromancer at Cemetery (Lothian's apprentice)
 const string U8_CT_CYRRUS = "CT_Cyrrus";  // Male Theurgist at Argentrock Isle
 const string U8_CT_STELLOS = "CT_Stellos";  // Male oldest Theurgist at Argentrock Isle
@@ -134,8 +134,9 @@ const string U8_IT_BUCKETHELMET = "IT_BucketHelmet";
 // bottle of oil
 // jug of oil
 // death disk (throwing knife instead?)
-// cracked gem or something, the small one
-// unstable gem or something, the big cluster one
+// fire gem (the small one)
+// chaos gem (the big cluster one)
+// red mushroom (need aerial servant to collect. might exlude)
 
 // Item Tags (Reagents)
 // Blood
@@ -143,7 +144,7 @@ const string U8_IT_BUCKETHELMET = "IT_BucketHelmet";
 // Wood
 // Dirt
 // Blackmoor
-// ExHood
+// ExecHood
 
 // Item Tags (Spells)
 // TODO: Get full list from Chronicle of Pagan by Bentic.
@@ -218,7 +219,8 @@ const string U8_IT_BENTICJOURNAL = "IT_BenticJournal";  // Has proof Devon is Te
 // Item Tags (Misc)
 const string U8_IT_RECALLGEM = "IT_RecallGem";
 const string U8_IT_SKULLOFQUAKES = "IT_SkullOfQuakes";
-const string U8_IT_EAC = "IT_EAC";  // The shape shifting EAC logo object. Cube, Tetrahedron, Sphere.
+const string U8_IT_DEADMANELBOW = "IT_DeadManElbow";  // AKA wooden stick. The item Vividos sends you to collect, along with an executioners hood.
+const string U8_IT_MORPHSHAPE = "IT_MorphShape";  // The shape shifting EAC logo object. Cube, Tetrahedron, Sphere.
 const string U8_IT_CEREMONIALSHIELD = "IT_CeremonialShield";  // The zealan shield. At Mythran's and Zealan shrine.
 const string U8_IT_CEREMONIALDAGGER = "IT_CeremonialDagger";  // The Necromancer dagger. The queen has it.
 

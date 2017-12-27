@@ -732,7 +732,7 @@ Electric Gateways - 5-10 electric damage
 Exploding Chests - 5-20 fire damage
 Exploding Books - 5-20 fire damage
 Fire Mortar - 5-20 fire damage
-Fire Shrooms (red mushroom) - fire damage, but unsure of amount
+Fire Shrooms (red mushroom) - 5-20 fire damage
 Fire Shooters (wall) - 5-20 fire damage
 Fire Spouts (ground) - 5-20 fire damage
 Floor Spikes - 3-5 piercing damage
