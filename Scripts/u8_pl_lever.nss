@@ -1,5 +1,5 @@
 // Ultima 8 Remake
-// Placeable Lever OnUsed
+// Placeable: Lever OnUsed
 
 // TODO: Does NWN have something by default for these? eg. Just activates any other object with same tag?
 

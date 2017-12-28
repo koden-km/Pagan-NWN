@@ -13,22 +13,22 @@
 // Waypoint Tags (Recall Portals)
 const string U8_WP_PORTAL_TENEBRAE = "U8_WP_PortalTenebrae";  // Central Tenebrae
 const string U8_WP_PORTAL_PLATEAU = "U8_WP_PortalPlateau";  // Plateau Mythrans Abode (Ether)
-const string U8_WP_PORTAL_ARGENT = "U8_WP_PortalArgent";  // Argent Rock Isle (Air)
+const string U8_WP_PORTAL_ARGENT = "U8_WP_PortalArgent";  // Argentrock Isle (Air)
 const string U8_WP_PORTAL_ENCLAVE = "U8_WP_PortalEnclave";  // Sorcerer's Enclave/Daemons Crag (Fire)
 const string U8_WP_PORTAL_CARTHAX = "U8_WP_PortalCarthax";  // Carthax Lake/Hydros Lair (Water)
 const string U8_WP_PORTAL_CATACOMBS = "U8_WP_PortalCatacombs";  // Upper Catacombs
 const string U8_WP_PORTAL_MOUNTAIN = "U8_WP_PortalMountain";  // Hall of Mountain King (Earth)
-const string U8_WP_PORTAL_VALE = "U8_WP_PortalVale";  // Lost Vale (New)
+const string U8_WP_PORTAL_LOSTVALE = "U8_WP_PortalLostVale";  // Lost Vale (New)
 
 // Trigger Tags (Recall Portals)
 const string U8_TR_PORTAL_TENEBRAE = "U8_TR_PortalTenebrae";  // Central Tenebrae
 const string U8_TR_PORTAL_PLATEAU = "U8_TR_PortalPlateau";  // Plateau Mythrans Abode (Ether)
-const string U8_TR_PORTAL_ARGENT = "U8_TR_PortalArgent";  // Argent Rock Isle (Air)
+const string U8_TR_PORTAL_ARGENT = "U8_TR_PortalArgent";  // Argentrock Isle (Air)
 const string U8_TR_PORTAL_ENCLAVE = "U8_TR_PortalEnclave";  // Sorcerer's Enclave/Daemons Crag (Fire)
 const string U8_TR_PORTAL_CARTHAX = "U8_TR_PortalCarthax";  // Carthax Lake/Hydros Lair (Water)
 const string U8_TR_PORTAL_CATACOMBS = "U8_TR_PortalCatacombs";  // Upper Catacombs
 const string U8_TR_PORTAL_MOUNTAIN = "U8_TR_PortalMountain";  // Hall of Mountain King (Earth)
-const string U8_TR_PORTAL_VALE = "U8_TR_PortalVale";  // Lost Vale (New)
+const string U8_TR_PORTAL_LOSTVALE = "U8_TR_PortalLostVale";  // Lost Vale (New)
 
 // Creature Tags (Titans)
 const string U8_CT_HYDROS = "U8_CT_Hydros";
@@ -89,14 +89,14 @@ const string U8_CT_BEREN = "U8_CT_Beren";  // Male Sorcerer at Tenebrae and Sorc
 //const string U8_CT_GUARD10 = "U8_CT_Guard10";  //  (In the palace armoury)
 
 // Creature Tags (Ancient Necromancers)
-const string U8_CT_NECROMANCER1 = "U8_CT_Necromancer1";
-const string U8_CT_NECROMANCER2 = "U8_CT_Necromancer2";
-const string U8_CT_NECROMANCER3 = "U8_CT_Necromancer3";
-const string U8_CT_NECROMANCER4 = "U8_CT_Necromancer4";
-const string U8_CT_NECROMANCER5 = "U8_CT_Necromancer5";
-const string U8_CT_NECROMANCER6 = "U8_CT_Necromancer6";
+const string U8_CT_NECROMANCER1 = "U8_CT_AcntNecro1";
+const string U8_CT_NECROMANCER2 = "U8_CT_AcntNecro2";
+const string U8_CT_NECROMANCER3 = "U8_CT_AcntNecro3";
+const string U8_CT_NECROMANCER4 = "U8_CT_AcntNecro4";
+const string U8_CT_NECROMANCER5 = "U8_CT_AcntNecro5";
+const string U8_CT_NECROMANCER6 = "U8_CT_AcntNecro6";
 
-// TODO: Not sure who these are, they were mentioned in a Pagan NPC doc that i have saved that I found online ages ago.
+// TODO: Not sure who these are, they were mentioned in a Pagan NPC doc that I found online ages ago. Maybe Lost Vale Zealan's?
 //const string U8_CT_CARDAS = "U8_CT_Cardas";
 //const string U8_CT_MENTAR = "U8_CT_Mentar";
 //const string U8_CT_DAEMOS = "U8_CT_Daemos";
@@ -114,36 +114,37 @@ const string U8_CT_SORCERER = "U8_CT_Sorcerer";  // Sorcerer's Enclave citizen
 const string U8_CT_THEURGIST = "U8_CT_Theurgist";  // Argentrock Isle citizen
 
 // Creature Tags (Monster/Mob/Hostile)
-const string U8_CT_AREIALSERVANT = "U8_CT_AreialServant";  // Whirlwind
+const string U8_CT_AREIALSERVANT = "U8_CT_AreialServ";  // Whirlwind
 const string U8_CT_CHANGELING = "U8_CT_Changeling";  // Little gray thing that transforms like Avatar
 const string U8_CT_DAEMON = "U8_CT_Daemon";  // Demon
 const string U8_CT_GHOST = "U8_CT_Ghost";  // Ghost that throws skulls
 const string U8_CT_GHOUL = "U8_CT_Ghoul";  // Zombie
 const string U8_CT_GOLEM = "U8_CT_Golem";  // Earth golem
 const string U8_CT_KITH = "U8_CT_Kith";  // Large red/purple spider
-const string U8_CT_LURKERMINON = "U8_CT_LurkerMinion";  // Crocodile mouth in water
+const string U8_CT_LURKERMINON = "U8_CT_LurkerMini";  // Crocodile mouth in water
 const string U8_CT_MANDRIL = "U8_CT_Mandril";  // Red and yellow bee like creature
 const string U8_CT_SEEKER = "U8_CT_Seeker";  // Red snake thing with big eye
-const string U8_CT_SKELETONWARRIOR = "U8_CT_SkeletonWarrior";  // Skelton with axe and shield
+const string U8_CT_SKELETONWARRIOR = "U8_CT_SkelWar";  // Skelton with axe and shield
 const string U8_CT_SKELLOT = "U8_CT_Skellot";  // Little lizard
 const string U8_CT_SPIDER = "U8_CT_Spider";  // Little green spider
 const string U8_CT_STALKER = "U8_CT_Stalker";  // Invisible thing with red eye
 const string U8_CT_TORAX = "U8_CT_Torax";  // Cow like thing with tough armour
 const string U8_CT_TROLL = "U8_CT_Troll";  // Big slow troll with club
-const string U8_CT_WILDCHILD = "U8_CT_WildChild";  // Wild child in heardsman valley
+const string U8_CT_WILDCHILD = "U8_CT_WildChild";  // Wild child in Heardsman Valley
+const string U8_CT_WILDGUARD = "U8_CT_WildGuard";  // Wild guard in East Road and Treasure Cove
 
 // Item Tags (Magic Weapons)
-const string U8_IW_BONECRUSHER = "U8_IW_BoneCrusher";
+const string U8_IW_BONECRUSHER = "U8_IW_BoneCrush";
 const string U8_IW_SLAYER = "U8_IW_Slayer";
 
 // Item Tags (Normal Weapons)
 const string U8_IW_DAGGER = "U8_IW_Dagger";
 
 // Item Tags (Magic Armour)
-const string U8_IA_MAGICHELMET = "U8_IA_MagicHelmet";
+const string U8_IA_MAGICHELMET = "U8_IA_MagicHelm";
 
 // Item Tags (Normal Armour)
-const string U8_IA_BUCKETHELMET = "U8_IA_BucketHelmet";
+const string U8_IA_BUCKETHELMET = "U8_IA_BucketHelm";
 
 // Item Tags (Explosives)
 // TODO: Not sure if NWN has something for these? Might need to use throwing objects or traps instead?

@@ -1,5 +1,5 @@
 // Ultima 8 Remake
-// Library functions for Recall Gem
+// Library functions: Recall Gem
 
 #include "u8_constants"
 
@@ -46,9 +46,9 @@ string U8GetRecallPortalWaypointTagFromTriggerTag(string sPortalTriggerTag)
     {
         return U8_WP_PORTAL_MOUNTAIN;
     }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_VALE)
+    else if (sPortalTriggerTag == U8_WP_PORTAL_LOSTVALE)
     {
-        return U8_WP_PORTAL_VALE;
+        return U8_WP_PORTAL_LOSTVALE;
     }
 
     U8DebugMessage("Unsupported portal trigger tag: " + sPortalTriggerTag);

@@ -1,8 +1,7 @@
 // Ultima 8 Remake
-// Trigger Recall portal pad OnEnter
+// Trigger OnEnter: Recall Pad/Portal
 
 #include "u8_constants"
-//#include "u8_lib_common"
 #include "u8_lib_recallgem"
 
 const string U8_PORTAL_VARNAME_STATE = "bPortalActive";
@@ -13,6 +12,11 @@ void main()
     if (GetIsPC(oObj))
     {
         string sWaypointTag = U8GetRecallPortalWaypointTagFromTriggerTag(GetTag(OBJECT_SELF));
+        if (sWaypointTag == "")
+        {
+            // Unknown recall portal waypoint trigger tag.
+            return;
+        }
 
         // Set flag so the PC has found this portal.
         U8SetHasFoundRecalPortal(oObj, sWaypointTag);
@@ -21,7 +25,7 @@ void main()
         object oPortalWaypoint = GetWaypointByTag(sWaypointTag);
         if (GetIsObjectValid(oPortalWaypoint) && !GetLocalInt(oPortalWaypoint, U8_PORTAL_VARNAME_STATE))
         {
-            // Create the portal active visual effect (res template "plc_portal").
+            // Create the portal active visual effect (second param is res template).
             CreateObject(OBJECT_TYPE_PLACEABLE, "plc_portal", GetLocation(oPortalWaypoint), TRUE);
 
             // Set the portal state as active.

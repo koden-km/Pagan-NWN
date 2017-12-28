@@ -1,0 +1,22 @@
+Conversation: Devon the fisherman
+
+[ROOT]
+    [OWNER:1 Appears(u8_cc_metdevon0)] @ Hello there.
+        [PC:1] @ Who are you?
+            [OWNER:2] @ I am Devon, my strange friend. And I am glad to see you are feeling better, <FirstName>.
+                [PC:2 Action(u8_ca_metdevon1)] @ How do you know my name?
+                    [OWNER:3] @ I am sorry, I did not mean to pry, but when I found you, I knew not who you were. I am afraid I read through your logbook and discovered your name. Please forgive me.
+                        [PC:3] @ Where am I?
+                            [OWNER:4 Action(TODO: make journal note? only do journal once)] @ Why, on the shore, friend, safe now and thankfully alive.
+                                [PC:4] @ Goodbye.
+                                    [OWNER:5] @ Farewell, friend Avatar, and good luck. You are welcome to stay with me for as long as you need. My food and provisions are yours until you wish to head to the city.
+                                        [PC:5] @ Continue.
+                                            [OWNER:6 Action(u8_ca_devonbye1 or u8_ca_devonturn1 {turns to face docks})] @ And be careful in your travels, for i fear you will encounter much voilence.
+                                                [PC:5] @ Continue.
+                                                    [OWNER:7] @ I can already see a crowd gathering there on the docks. That can only mean trouble.
+                                                        [PC:5 Action(END DIALOG)] @ End Dialog.
+    [OWNER:10 Appears(u8_cc_metdevon1)] @ TODO: Greeting after knows each other...
+        [PC:10] @ TODO: Response...
+            [OWNER:11] @ TODO: List of questions...
+            [OWNER:12] @ TODO: List of questions...
+            [OWNER:13] @ TODO: List of questions...

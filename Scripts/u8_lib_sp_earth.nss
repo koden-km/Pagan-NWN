@@ -1,5 +1,5 @@
 // Ultima 8 Remake
-// Library functions for Earth magic
+// Library functions: Earth spells
 
 #include "u8_constants"
 //#include "u8_lib_common"

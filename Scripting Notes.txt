@@ -30,23 +30,23 @@ Things to figure out and/or confirm before getting in to deep
     + "u8_ar_plat_user"  // OnUserDefined
   - Creatures (characters/mobs) OnUserDefined prefix with "cr".
     + "u8_cr_devon"
-	+ "u8_cr_mythran"
-	+ "u8_cr_hydros"
-	+ "u8_cr_skeleton"
-	+ "u8_cr_ghoul"
+    + "u8_cr_mythran"
+    + "u8_cr_hydros"
+    + "u8_cr_skeleton"
+    + "u8_cr_ghoul"
   - Triggers prefix with "tr".
     + "u8_tr_docks_cs1"  // docks cutscene 1: Toran exe
     + "u8_tr_docks_cs2"  // docks cutscene 2: Devon exe
     + "u8_tr_recallpad"  // find recall pad. Trigger tag name is used for specific pad logic.
-	+ "u8_tr_redshroom"  // red mushroom trigger trap
+    + "u8_tr_redshroom"  // red mushroom trigger trap
   - Placeable prefix with "pl".
     + "u8_pl_dartboard"
-	+ "u8_pl_lever"
-	+ "u8_pl_pltcavelvr" or "u8_pl_pclv"  // Plateau cave levers, they all share same script like tut.
+    + "u8_pl_lever"
+    + "u8_pl_pltcavelvr" or "u8_pl_pclv"  // Plateau cave levers, they all share same script like tut.
   - Conversation action prefix with "ca".
     + "u8_ca_recallxxxx"  // where xxxx is: tene, plat, isle, crag, lake, cata, hall, vale.
-	+ "u8_ca_myt_grec"  // 3 digit character/creature, 'g' to give, 3 digit thing. eg. mythran give recall
-	+ "u8_ca_dev_gkey"
+    + "u8_ca_myt_grec"  // 3 digit character/creature, 'g' to give, 3 digit thing. eg. mythran give recall
+    + "u8_ca_dev_gkey"
   - Libraries (use as includes) prefix with "lib". Might need these for Items since they merge into Module scripts.
     + "u8_lib_earth"  // Magic library. Spell creation and casting.
     + "u8_lib_air"  // Magic library. Spell creation and casting.
@@ -396,27 +396,27 @@ Paste this script and save as "StoneRecall01" (or whatever you want)
 
 void main()
 {
-	object oActivated = GetItemActivated();
-	switch (2);
-	{
-		// Item 1 = Stone of Recall type item.
-		case 1:
-			if (GetTag(oActivated) == "item1")
-			{
-				object oObject = GetItemActivator();
-				object oTarget = GetItemActivator();
-				location lLocation = GetLocation(oObject);
-				{
-					// Object 1 = A Placeable object (invisible object works best). Must be the blueprint name NOT TAG!!
-					CreateObject(OBJECT_TYPE_PLACEABLE, "object1", lLocation, FALSE);
-				}
-				{
-					// stonerecall02 = name of second script
-					ExecuteScript("stonerecall02", oTarget);
-				}
-			}
-			break;
-	}
+    object oActivated = GetItemActivated();
+    switch (2);
+    {
+        // Item 1 = Stone of Recall type item.
+        case 1:
+            if (GetTag(oActivated) == "item1")
+            {
+                object oObject = GetItemActivator();
+                object oTarget = GetItemActivator();
+                location lLocation = GetLocation(oObject);
+                {
+                    // Object 1 = A Placeable object (invisible object works best). Must be the blueprint name NOT TAG!!
+                    CreateObject(OBJECT_TYPE_PLACEABLE, "object1", lLocation, FALSE);
+                }
+                {
+                    // stonerecall02 = name of second script
+                    ExecuteScript("stonerecall02", oTarget);
+                }
+            }
+            break;
+    }
 }
 
 Create a new placeable object and give it a unique tag. Make sure its appearance is set to Invisible Object. This is your object1 in the script above.
@@ -425,20 +425,20 @@ Go to the Script Editor, paste this in and save as "stonerecall02".
 
 void main()
 {
-	object oActivated = GetItemActivated();
-	switch (2);
-	{
-		case 1:
-			if (GetTag(oActivated) == "item1")
-			{
-				object oPC = GetItemActivator();
-				// waypoint1 = Tag of waypoint where the player will be taken to when they activate the stone
-				object oTarget = GetWaypointByTag("waypoint1");
-				AssignCommand(oPC,JumpToObject(oTarget));
-				ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect (VFX_IMP_HOLY_AID), oPC);
-			}
-			break;
-	}
+    object oActivated = GetItemActivated();
+    switch (2);
+    {
+        case 1:
+            if (GetTag(oActivated) == "item1")
+            {
+                object oPC = GetItemActivator();
+                // waypoint1 = Tag of waypoint where the player will be taken to when they activate the stone
+                object oTarget = GetWaypointByTag("waypoint1");
+                AssignCommand(oPC,JumpToObject(oTarget));
+                ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect (VFX_IMP_HOLY_AID), oPC);
+            }
+            break;
+    }
 }
 
 Create a Recall Portal near the waypoint you just made.
@@ -448,23 +448,23 @@ Add a PC line such as "Step in to the Portal" and then add this script to the Ac
 
 void main()
 {
-	location lLocation;
-	object oObject, oActionSubject, oPC, oDestroy;
-	{
-		// object1 = TAG name of the placeable created in the first script	
-		oObject = GetObjectByTag("object1", 0);
-		oDestroy = GetObjectByTag("object1", 0);
-		oActionSubject = GetPCSpeaker();
-		oPC = GetPCSpeaker();
-		lLocation = GetLocation(oObject);
-		{
-			AssignCommand(oActionSubject, ActionJumpToLocation(lLocation));
-			ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect (VFX_IMP_UNSUMMON), oPC);
-		}
-		{
-			DestroyObject(oDestroy, 3.0);
-		}
-	}
+    location lLocation;
+    object oObject, oActionSubject, oPC, oDestroy;
+    {
+        // object1 = TAG name of the placeable created in the first script
+        oObject = GetObjectByTag("object1", 0);
+        oDestroy = GetObjectByTag("object1", 0);
+        oActionSubject = GetPCSpeaker();
+        oPC = GetPCSpeaker();
+        lLocation = GetLocation(oObject);
+        {
+            AssignCommand(oActionSubject, ActionJumpToLocation(lLocation));
+            ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect (VFX_IMP_UNSUMMON), oPC);
+        }
+        {
+            DestroyObject(oDestroy, 3.0);
+        }
+    }
 }
 
 
@@ -943,3 +943,11 @@ Blackwine - 3 Obsidian Coins
 Hurricane - 2 Obsidian Coins
 Breath o' Spirit - 2 Obsidian Coins
 Cloven Hoof - 5 Obsidian Coins
+
+
+
+Virtues?
+--------
+
+It would be good to track the Virtues of the player during the game without them knowing and present
+them at the end. Read up on how Ultima 4 tracked the virtues.

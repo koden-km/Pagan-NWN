@@ -1,5 +1,5 @@
 // Ultima 8 Remake
-// Conversation Action Recall Gem Teleport to Tenebrae.
+// Conversation Action: Use Recall Gem to teleport to Tenebrae
 
 #include "u8_constants"
 #include "u8_lib_recallgem"
@@ -16,7 +16,7 @@ void main()
     //object oPC = GetFirstPC();
     //while (GetIsObjectValid(oPC))
     //{
-    //   U8ActionRecallToPortal(oPC, U8_WP_PORTAL_TENEBRAE);
-    //   oPC = GetNextPC();
+    //    U8ActionRecallToPortal(oPC, U8_WP_PORTAL_TENEBRAE);
+    //    oPC = GetNextPC();
     //}
 }

@@ -1,7 +1,7 @@
 // Ultima 8 Remake
-// Placeable Grave Kalen's Beloved OnXXXXX
+// Placeable: Grave of Kalen's beloved OnXXXXX
 //
-// When spell "open gound" is cast on this grave, activate game state Hydros free.
+// When Earth spell "Open Gound" is cast on this grave, activate game state Hydros free.
 // Flood the lake area and start the global rainy weather and fog.
 
 // TODO:
@@ -17,10 +17,7 @@ void main()
     object oPC = GetEnteringObject();
     if (GetIsPC(oPC))
     {
-        AssignCommand(
-            oPC,
-            ActionSpeakString("I entered the trigger! " + GetTag(OBJECT_SELF))
-        );
+        AssignCommand(oPC, ActionSpeakString("I entered the trigger! " + GetTag(OBJECT_SELF)));
 
         object oArea = GetArea(OBJECT_SELF);
         if (GetLocalInt(oArea, "TILEMAGIC_APPLIED") == FALSE)

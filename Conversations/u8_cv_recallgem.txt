@@ -1,0 +1,46 @@
+Conversation: Recall Gem
+
+// TODO: hmm use condition scripts, or direct variable checks? does direct variable checks just generate scripts anyway?
+// scripts allows use of constants for easier refactor, but means more scripts needed.
+// Trying different conversation source layouts so structure can be saved repo. Compact or tree like.
+
+
+[ROOT]
+    [OWNER:1] @ Recall to which destination?
+        [PC:1 Appears(u8_cc_recalltene), Action(u8_ca_recalltene)] @ Central Tenebrae.
+        [PC:2 Appears(u8_cc_recallplat), Action(u8_ca_recallplat)] @ Plateau.
+        [PC:3 Appears(u8_cc_recallhall), Action(u8_ca_recallhall)] @ Hall of the Mountain King.
+        [PC:4 Appears(u8_cc_recallcata), Action(u8_ca_recallcata)] @ Upper Catacombs.
+        [PC:5 Appears(u8_cc_recallisle), Action(u8_ca_recallisle)] @ Argentrock Isle.
+        [PC:6 Appears(u8_cc_recalllake), Action(u8_ca_recalllake)] @ Carthax Lake.
+        [PC:7 Appears(u8_cc_recallcrag), Action(u8_ca_recallcrag)] @ Daemon's Crag.
+        [PC:8 Appears(u8_cc_recallvale), Action(u8_ca_recallvale)] @ Lost Vale.
+        [PC:9 Action(END DIALOG)] @ Nowhere.
+
+
+|-(PC Response, Appears when, Variable name "U8_TT_PortalTenebrae", Has value 1) Central Tenebrae
+| |- (PC Response: Actions taken "u8_ca_recalltene") End dialog.
+|
+|-(PC Response 2: Appears when, Variable name "U8_TT_PortalPlateau", Has value 1) Plateau
+| |- (PC Response: Actions taken "u8_ca_recallplat") End dialog.
+|
+|-(PC Response 3: Appears when, Variable name "U8_TT_PortalArgent", Has value 1) Argentrock Isle
+| |- (PC Response: Actions taken "u8_ca_recallisle") End dialog.
+|
+|-(PC Response 4: Appears when, Variable name "U8_TT_PortalEnclave", Has value 1) Sorcerers Enclave
+| |- (PC Response: Actions taken "u8_ca_recallcrag") End dialog.
+|
+|-(PC Response 5: Appears when, Variable name "U8_TT_PortalCarthax", Has value 1) Carthax Lake
+| |- (PC Response: Actions taken "u8_ca_recalllake") End dialog.
+|
+|-(PC Response 6: Appears when, Variable name "U8_TT_PortalCatacombs", Has value 1) Upper Catacombs
+| |- (PC Response: Actions taken "u8_ca_recallcata") End dialog.
+|
+|-(PC Response 7: Appears when, Variable name "U8_TT_PortalMountain", Has value 1) Hall of the Mountain King
+| |- (PC Response: Actions taken "u8_ca_recallhall") End dialog.
+|
+|-(PC Response 8: Appears when, Variable name "U8_TT_PortalLostVale", Has value 1) Lost Vale
+| |- (PC Response: Actions taken "u8_ca_recallvale") End dialog.
+|
+|-(PC Response 9) Nowhere.
+  |- (PC Response) End dialogue.

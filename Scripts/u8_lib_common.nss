@@ -1,5 +1,5 @@
 // Ultima 8 Remake
-// Library of common functions.
+// Library functions: Common
 
 // Debug message, covers many testing bases.
 void U8DebugMessage(string sMessage)

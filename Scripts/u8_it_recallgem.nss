@@ -1,85 +1,75 @@
 // Ultima 8 Remake
-// Library functions for Recall Gem
+// Item Event Script: Recall Gem
 
-#include "u8_constants"
-#include "u8_lib_common"
+#include "x2_inc_switches"
+#include "u8_lib_recallgem"
 
-// Set flag for player(s), for has found portal, using the portal's waypoint tag as the key.
-void U8SetHasFoundRecalPortal(object oPC, string sPortalWaypointTag)
+void main()
 {
-    SetLocalInt(oPC, sPortalWaypointTag, 1);
-}
+    int nEvent = GetUserDefinedItemEventNumber();
+    object oPC;
+    object oItem;
 
-// Get flag for player(s), for has found portal, using the portal's waypoint tag as the key.
-int U8GetHasFoundRecalPortal(object oPC, string sPortalWaypointTag)
-{
-    return GetLocalInt(oPC, sPortalWaypointTag);
-}
+    //SendMessageToPC(GetFirstPC(), "DEBUG: Event number: " + IntToString(nEvent) + ", This Name: " + GetName(OBJECT_SELF));
 
-// Return the portal waypoint tag from the mapped portal trigger tag.
-string U8GetRecallPortalWaypointTagFromTriggerTag(string sPortalTriggerTag)
-{
-    if (sPortalTriggerTag == U8_WP_PORTAL_TENEBRAE)
+    // * This code runs when the item has the OnHitCastSpell: Unique power property
+    // * and it hits a target(weapon) or is being hit (armor)
+    // * Note that this event fires for non PC creatures as well.
+    if (nEvent == X2_ITEM_EVENT_ONHITCAST)
     {
-        return U8_WP_PORTAL_TENEBRAE;
-    }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_PLATEAU)
-    {
-        return U8_WP_PORTAL_PLATEAU;
-    }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_ARGENT)
-    {
-        return U8_WP_PORTAL_ARGENT;
-    }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_ENCLAVE)
-    {
-        return U8_WP_PORTAL_ENCLAVE;
-    }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_CARTHAX)
-    {
-        return U8_WP_PORTAL_CARTHAX;
-    }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_CATACOMBS)
-    {
-        return U8_WP_PORTAL_CATACOMBS;
-    }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_MOUNTAIN)
-    {
-        return U8_WP_PORTAL_MOUNTAIN;
-    }
-    else if (sPortalTriggerTag == U8_WP_PORTAL_VALE)
-    {
-        return U8_WP_PORTAL_VALE;
+        oItem = GetSpellCastItem();                  // The item casting triggering this spellscript
+        object oSpellOrigin = OBJECT_SELF ;
+        object oSpellTarget = GetSpellTargetObject();
+        oPC = OBJECT_SELF;
     }
 
-    U8DebugMessage("[Debug] Unsupported portal trigger tag: " + sPortalTriggerTag);
-
-    // Unknown.
-    return "";
-}
-
-// Try teleport player to recall portal matching the given portal waypoint tag.
-void U8ActionRecallToPortal(object oPC, string sPortalWaypointTag)
-{
-    object oPortalWaypoint = GetWaypointByTag(sPortalWaypointTag);
-    if (GetIsObjectValid(oPC) && GetIsObjectValid(oPortalWaypoint))
+    // * This code runs when the Unique Power property of the item is used
+    // * Note that this event fires PCs only
+    else if (nEvent == X2_ITEM_EVENT_ACTIVATE)
     {
-        if (U8GetHasFoundRecalPortal(oPC, sPortalWaypointTag))
-        {
-            effect eVisual = EffectVisualEffect(VFX_FNF_SMOKE_PUFF);
-            ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eVisual, oPC, 1.0);
+        oPC = GetItemActivator();
+        oItem = GetItemActivated();
 
-            AssignCommand(oPC, JumpToLocation(GetLocation(oPortalWaypoint)));
-        }
+		U8ItemRecallGemOnActivated(oItem, oPC);
     }
-}
 
-// Unique Power Self Only
-void U8ItemRecallGemOnActivated(object oActivated, object oActivator)
-{
-    if (GetIsPC(oActivator))
+    // * This code runs when the item is equipped
+    // * Note that this event fires PCs only
+    else if (nEvent == X2_ITEM_EVENT_EQUIP)
     {
-        // Make PC start private conversation with themself (items can't converse on their own).
-        AssignCommand(oActivator, ActionStartConversation(oActivator, "u8_cv_recallgem", TRUE));
+        oPC = GetPCItemLastEquippedBy();
+        oItem = GetPCItemLastEquipped();
+    }
+
+    // * This code runs when the item is unequipped
+    // * Note that this event fires PCs only
+    else if (nEvent == X2_ITEM_EVENT_UNEQUIP)
+    {
+        oPC = GetPCItemLastUnequippedBy();
+        oItem = GetPCItemLastUnequipped();
+    }
+
+    // * This code runs when the item is acquired
+    // * Note that this event fires PCs only
+    else if (nEvent == X2_ITEM_EVENT_ACQUIRE)
+    {
+        oPC = GetModuleItemAcquiredBy();
+        oItem = GetModuleItemAcquired();
+    }
+
+    // * This code runs when the item is unaquire d
+    // * Note that this event fires PCs only
+    else if (nEvent == X2_ITEM_EVENT_UNACQUIRE)
+    {
+        oPC = GetModuleItemLostBy();
+        oItem = GetModuleItemLost();
+    }
+
+    //* This code runs when a PC or DM casts a spell from one of the
+    //* standard spellbooks on the item
+    else if (nEvent == X2_ITEM_EVENT_SPELLCAST_AT)
+    {
+        oPC = GetLastSpellCaster();
+        oItem = GetSpellTargetObject();
     }
 }

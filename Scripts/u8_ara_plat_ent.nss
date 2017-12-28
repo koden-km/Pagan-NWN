@@ -1,7 +1,7 @@
 // Ultima 8 Remake
 // Area OnEnter: Plateau
 
-// Fills pit areas with water.
+// Fills pit areas with water to match U8 visuals.
 
 #include "x2_inc_toollib"
 

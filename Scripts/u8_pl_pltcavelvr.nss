@@ -1,13 +1,13 @@
 // Ultima 8 Remake
-// Placeable Plateau Cave puzzle lever OnUsed
+// Placeable: Plateau Cave puzzle lever OnUsed
 //
 // This is for the lever group puzzle in the cave to the plateau.
 // Attach this to each lever in the puzzle group and tag them to match.
 
-#include "u8_lib"
+#include "u8_lib_common"
 
-// Lever's in the puzzle group will be named this prefix plus "M" for master or "1" through "6" for child levers.
-const string U8_PT_LEVER_PREFIX = "PT_Lever_Plateau";
+// Levers in the puzzle group will be named this prefix plus "M" for master or "1" through "6" for child levers.
+const string U8_PT_LEVER_PREFIX = "U8_PT_LeverPlateauCave";
 
 const string U8_LEVER_VARNAME_STATE = "bLeverActive";
 

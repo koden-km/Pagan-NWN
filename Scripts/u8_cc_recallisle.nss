@@ -1,5 +1,5 @@
 // Ultima 8 Remake
-// Conversation Condition: Has found Recall Pad for Upper Catacombs?
+// Conversation Condition: Has found Recall Pad for Argentrock Isle?
 
 #include "u8_constants"
 #include "u8_lib_recallgem"
@@ -10,8 +10,9 @@ int StartingConditional()
     object oPC = GetPCSpeaker();
     if (GetIsPC(oPC))
     {
-        nResult = U8GetHasFoundRecalPortal(oPC, U8_WP_PORTAL_CATACOMBS);
+        nResult = U8GetHasFoundRecalPortal(oPC, U8_WP_PORTAL_ARGENT);
     }
 
     return nResult;
 }
+
