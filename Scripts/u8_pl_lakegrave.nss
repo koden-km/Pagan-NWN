@@ -11,6 +11,8 @@
 
 #include "x2_inc_toollib"
 
+const string U8_AREA_FLOODED_VARNAME_STATE = "bFlooded";
+
 void main()
 {
 	// TODO: This was the test with a Trigger OnEnter.
@@ -20,12 +22,12 @@ void main()
         AssignCommand(oPC, ActionSpeakString("I entered the trigger! " + GetTag(OBJECT_SELF)));
 
         object oArea = GetArea(OBJECT_SELF);
-        if (GetLocalInt(oArea, "TILEMAGIC_APPLIED") == FALSE)
+        if (GetLocalInt(oArea, U8_AREA_FLOODED_VARNAME_STATE) == FALSE)
         {
             TLChangeAreaGroundTilesEx(oArea, X2_TL_GROUNDTILE_WATER, 1.5);
 
             // Set a variable to indicate the tilemagic exists.
-            SetLocalInt(oArea, "TILEMAGIC_APPLIED", TRUE);
+            SetLocalInt(oArea, U8_AREA_FLOODED_VARNAME_STATE, TRUE);
         }
     }
 }

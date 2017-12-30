@@ -236,8 +236,17 @@ const string U8_IT_CEREMONIALDAGGER = "U8_IT_CeremonialDagger";  // The Necroman
 // I guess i could make a new Devon and hide the old one. The new one would already know the player, no need to keep old conversation branches.
 // Creating a new one can then have a different tag and clothes. No point having the new tempest wearing fishman's rags, although that was how it was.
 // I might need to move the waypoints to do the time of day transitions based on storyline. If thats even possible.
-//const string U8_WP_DEVON_HOME = "NIGHT_U8_CT_Devon";
-//const string U8_WP_DEVON_WORK = "POST_U8_CT_Devon";
+//const string U8_WP_DEVON_HOME = "NIGHT_U8_CT_Devon";  // West Tenebrae (until is Tempest)
+//const string U8_WP_DEVON_WORK = "POST_U8_CT_Devon";  // Beach (until is Tempest)
 //const string U8_WP_DEVON_BEACH_01 = "WP_U8_CT_Devon_Beach_01";  // for auto waypoints, i probably can't have the "beach" thing here.
 //const string U8_WP_DEVON_BEACH_02 = "WP_U8_CT_Devon_Beach_02";
 //const string U8_WP_DEVON_BEACH_03 = "WP_U8_CT_Devon_Beach_03";
+
+// Module Game State Variable Names
+const string U8_GAMESTATE_VARNAME_TORANEXECUTED = "bToranExecuted"; // First docks cut scene.
+const string U8_GAMESTATE_VARNAME_DEVONTEMPEST = "bDevonTempest"; // Devon is now the Tempest.
+const string U8_GAMESTATE_VARNAME_HEARTTAKEN = "bHeartTaken"; // Undead invasion.
+const string U8_GAMESTATE_VARNAME_BREATHTAKEN = "bBreathTaken"; // No more healing.
+const string U8_GAMESTATE_VARNAME_HYDROSFREE = "bHydrosFree"; // Rain storms and floods.
+const string U8_GAMESTATE_VARNAME_PYROSFREE = "bPyrosFree"; // No more healing.
+const string U8_GAMESTATE_VARNAME_ETHEREALVOID = "bEtherealVoid"; // In Ethereral Void (no recall, respawns here).
